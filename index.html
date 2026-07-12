@@ -157,16 +157,17 @@
     /* Two-part home invitation */
     #welcome { display:block; padding:0; }
     #welcome .intro { width:100%; max-width:none; }
-    .bride-section, .surprise-section { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:clamp(55px,8vw,105px) 22px; }
-    .bride-section { min-height:88svh; background:linear-gradient(180deg,#f3e8dc,#e9d7c4); }
-    .bride-section h1 { order:0!important; margin:0 0 12px!important; text-align:center; }
-    .bride-section .bride-cutout { order:0; height:clamp(330px,55vh,590px); margin:0 auto; transition:none; }
+    .bride-section, .surprise-section { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:clamp(32px,4vw,55px) 22px; }
+    .bride-section { position:relative; min-height:calc(100svh - 80px); padding:0 22px; overflow:hidden; background:linear-gradient(180deg,#f3e8dc,#e9d7c4); }
+    .bride-section::before { content:""; position:absolute; z-index:0; left:50%; bottom:-95px; width:min(690px,72vw); aspect-ratio:1; transform:translateX(-50%); clip-path:polygon(50% 96%,43% 88%,18% 65%,7% 49%,4% 33%,8% 19%,18% 10%,31% 8%,41% 13%,50% 25%,59% 13%,69% 8%,82% 10%,92% 19%,96% 33%,93% 49%,82% 65%,57% 88%); background:linear-gradient(145deg,rgba(196,165,139,.42),rgba(225,205,187,.55)); filter:drop-shadow(0 20px 28px rgba(91,64,45,.1)); }
+    .bride-section h1 { position:absolute; z-index:2; top:7%; left:50%; width:100%; margin:0!important; transform:translateX(-50%); font-size:clamp(2.8rem,4.2vw,4rem)!important; line-height:1!important; text-align:center; white-space:nowrap; }
+    .bride-section .bride-cutout { position:absolute; z-index:1; left:50%; bottom:0; order:0; width:min(590px,82vw); height:clamp(460px,62vh,590px); margin:0; transform:translateX(-50%); object-position:center bottom; transition:none; }
     .surprise-section { position:relative; isolation:isolate; min-height:620px; padding-block:85px; overflow:hidden; border-top:1px solid rgba(73,55,43,.13); background:linear-gradient(180deg,#f3e8dc,#e9d7c4); }
     .surprise-section::before { display:none; }
     .surprise-section > .eyebrow { position:relative; order:0!important; width:auto!important; margin-bottom:4px!important; padding:0!important; border:0!important; color:#49372b!important; }
     .surprise-section #open-surprise { order:0; margin-top:100px; }
     .surprise-section .inline-gifts { order:0; }
-    #welcome.opened .bride-section .bride-cutout { height:clamp(330px,55vh,590px); }
+    #welcome.opened .bride-section .bride-cutout { height:clamp(460px,62vh,590px); }
     #welcome.opened .surprise-section > .eyebrow { animation:messageAway .45s ease forwards; }
     @keyframes messageAway { to { opacity:0; transform:translateY(-12px); height:0; margin:0; overflow:hidden; } }
 
@@ -174,11 +175,12 @@
       body { padding:10px; }
       #welcome { min-height:calc(100svh - 20px); padding-top:55px; }
       #welcome { padding-top:0; }
-      .bride-section { min-height:82svh; padding:65px 18px 35px; }
+      .bride-section { min-height:calc(100svh - 20px); padding:0 18px; }
+      .bride-section::before { bottom:-40px; width:min(560px,115vw); }
       .surprise-section { min-height:560px; padding:70px 16px 65px; }
       .surprise-section #open-surprise { margin-top:62px; }
-      #welcome h1 { font-size:3.6rem; }
-      .bride-cutout, #welcome.opened .bride-section .bride-cutout { height:360px; }
+      #welcome h1 { top:10%; font-size:clamp(2rem,8.5vw,2.8rem)!important; }
+      .bride-cutout, #welcome.opened .bride-section .bride-cutout { width:min(470px,94vw); height:min(500px,60vh); margin-bottom:0; }
       #open-surprise { width:245px; height:138px; margin-top:34px; padding:78px 12px 14px; }
       #open-surprise::before { top:-18px; height:39px; }
       #open-surprise .gift-bow { top:-62px; width:130px; height:120px; }
@@ -223,7 +225,7 @@
             <a class="mini-gift" href="bridesmaids.html"><span>Bridesmaids</span></a>
           </nav>
         </div>
-        <h1 id="welcome-title">This one’s<br>for you.</h1>
+        <h1 id="welcome-title">This one’s for you.</h1>
         <button class="open-btn" id="open-surprise">Touch to open <span aria-hidden="true">↗</span></button>
       </div>
     </section>
