@@ -33,7 +33,7 @@
           <p class="message-number">01</p>
           <div><p class="section-kicker">From the friendship files</p><h2 class="collection-title">A message from Mai.</h2></div>
         </header>
-        <article class="friend-message">
+        <article class="friend-message friend-message-reverse">
           <figure class="friend-photo">
             <img src="friends/mai.jpeg" alt="Mai and Menna">
             <figcaption>One for the memory book</figcaption>
@@ -131,6 +131,33 @@
         </article>
       </div>
     </section>
+    <section class="content friends-content" id="israa-message">
+      <div class="friends-messages">
+        <header class="friends-messages-head">
+          <p class="message-number">05</p>
+          <div><p class="section-kicker">Press play on this memory</p><h2 class="collection-title">A voice note from Israa.</h2></div>
+        </header>
+        <article class="friend-message friend-message-audio friend-message-reverse">
+          <figure class="friend-photo pending-friend-photo">
+            <img src="friends/israa.jpeg" alt="Israa and Menna together" onerror="this.hidden=true">
+            <span aria-hidden="true">I</span>
+            <figcaption>A friendship worth hearing</figcaption>
+          </figure>
+          <div class="friend-letter voice-letter">
+            <p class="letter-label">A voice note from</p>
+            <h3>Israa <span aria-hidden="true">&#10084;</span></h3>
+            <div class="voice-note">
+              <button class="voice-play israa-play" type="button" aria-label="Play Israa's voice note"><span aria-hidden="true">&#9654;</span></button>
+              <div><p class="voice-status israa-status" aria-live="polite">This memory will play when you reach it.</p><p class="voice-caption">A little piece of Israa, saved for you.</p></div>
+            </div>
+            <audio class="israa-audio" controls preload="metadata">
+              <source src="friends/israa.mp3" type="audio/mpeg">
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
   <script>
     const haniaSection = document.getElementById('hania-message');
@@ -208,8 +235,8 @@
       } else if (!aishaAudio.paused) {
         aishaAudio.pause();
       }
-    }, { threshold: .55 });
-    aishaObserver.observe(aishaSection);
+    }, { threshold: .25 });
+    aishaObserver.observe(aishaSection.querySelector('.friend-message'));
 
     const nourSection = document.getElementById('nour-message');
     const nourVideo = nourSection.querySelector('.nour-video');
@@ -220,9 +247,54 @@
       } else if (!nourVideo.paused) {
         nourVideo.pause();
       }
-    }, { threshold: .5 });
+    }, { threshold: .25 });
     nourVideo.addEventListener('play', () => nourVideo.classList.remove('autoplay-blocked'));
-    nourObserver.observe(nourSection);
+    nourObserver.observe(nourVideo);
+
+    const israaSection = document.getElementById('israa-message');
+    const israaAudio = israaSection.querySelector('.israa-audio');
+    const israaButton = israaSection.querySelector('.israa-play');
+    const israaStatus = israaSection.querySelector('.israa-status');
+    const playIsraa = async () => {
+      try {
+        await israaAudio.play();
+        israaSection.classList.remove('needs-audio-click');
+        israaSection.classList.add('audio-playing');
+        israaStatus.textContent = 'Israa is speaking...';
+      } catch {
+        israaSection.classList.add('needs-audio-click');
+        israaStatus.textContent = 'Tap play to hear Israa\'s message.';
+      }
+    };
+    israaButton.addEventListener('click', () => israaAudio.paused ? playIsraa() : israaAudio.pause());
+    israaAudio.addEventListener('play', () => {
+      israaSection.classList.add('audio-playing');
+      israaButton.setAttribute('aria-label', 'Pause Israa\'s voice note');
+    });
+    israaAudio.addEventListener('pause', () => {
+      israaSection.classList.remove('audio-playing');
+      israaButton.setAttribute('aria-label', 'Play Israa\'s voice note');
+    });
+    israaAudio.addEventListener('ended', () => {
+      israaSection.classList.remove('audio-playing');
+      israaStatus.textContent = 'Play Israa\'s message again.';
+    });
+    const israaObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (israaAudio.ended) israaAudio.currentTime = 0;
+        playIsraa();
+      } else if (!israaAudio.paused) {
+        israaAudio.pause();
+      }
+    }, { threshold: .25 });
+    israaObserver.observe(israaSection.querySelector('.friend-message'));
+
+    const allFriendMedia = [...document.querySelectorAll('audio, video')];
+    allFriendMedia.forEach(media => media.addEventListener('play', () => {
+      allFriendMedia.forEach(otherMedia => {
+        if (otherMedia !== media && !otherMedia.paused) otherMedia.pause();
+      });
+    }));
   </script>
 </body>
 </html>

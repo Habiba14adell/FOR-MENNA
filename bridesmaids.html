@@ -138,12 +138,18 @@
           media.pause();
         }
       });
-    }, { threshold: .5 });
+    }, { threshold: .25 });
 
     viewportMedia.forEach(media => {
       mediaObserver.observe(media);
       media.addEventListener('play', () => media.classList.remove('autoplay-blocked'));
     });
+
+    viewportMedia.forEach(media => media.addEventListener('play', () => {
+      viewportMedia.forEach(otherMedia => {
+        if (otherMedia !== media && !otherMedia.paused) otherMedia.pause();
+      });
+    }));
 
   </script>
 </body>
