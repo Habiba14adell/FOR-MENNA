@@ -1,7 +1,125 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Friends · For the Bride</title><link rel="stylesheet" href="sections.css"></head>
-<body><main class="page">
-  <header class="cover"><a class="back" href="index.html#open-gifts">← Back to the gifts</a><div><h1>Friends</h1><h2>All the laughter,<br>all the years.</h2><p class="cover-message">For the ones who turned ordinary days into favorite memories—and who cannot wait to celebrate the loveliest day with you.</p><p class="cover-signature">Here for every moment.</p></div></header>
-  <section class="content"><article class="message"><h2 class="collection-title">Messages from<br>your friends.</h2><p>A collection of memories and love from the friends who made every year brighter.</p><div class="coming">Friends’ messages, photos, videos and recordings will appear here.</div></article></section>
-</main></body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Friends &middot; For the Bride</title>
+  <link rel="stylesheet" href="sections.css">
+</head>
+<body>
+  <main class="friends-page-layout">
+    <header class="friends-cover">
+      <div class="friends-cover-copy">
+        <a class="back" href="index.html#open-gifts">&larr; Back to the gifts</a>
+        <div class="friends-title-group">
+          <p class="friends-kicker">The unofficial, unpaid wedding committee</p>
+          <h1 class="friends-title">
+            <span>Besties.</span>
+            <span>Bad ideas.</span>
+            <span>Great stories.</span>
+          </h1>
+          <p class="friends-stamp" aria-label="Since forever">Since<br>forever</p>
+          <p class="cover-message">For the ones who turned ordinary days into favorite memories&mdash;and somehow kept the photographic evidence.</p>
+        </div>
+      </div>
+      <figure class="friends-bride">
+        <img src="assets/bride-transparent.png" alt="The bride wearing her veil">
+        <figcaption>Here for every moment<br>(and every embarrassing one).</figcaption>
+      </figure>
+    </header>
+    <section class="content friends-content">
+      <div class="friends-messages">
+        <header class="friends-messages-head">
+          <p class="message-number">01</p>
+          <div><p class="section-kicker">From the friendship files</p><h2 class="collection-title">A message from Mai.</h2></div>
+        </header>
+        <article class="friend-message">
+          <figure class="friend-photo">
+            <img src="friends/mai.jpeg" alt="Mai and Menna smiling together in a garden">
+            <figcaption>One for the memory book</figcaption>
+          </figure>
+          <div class="friend-letter">
+            <p class="letter-label">A note from</p>
+            <h3>Mai <span aria-hidden="true">&#10084;</span></h3>
+            <div class="letter-copy">
+              <p class="letter-greeting">Manono <span aria-hidden="true">&#10084;</span></p>
+              <p>From the moment I got to know you, I&rsquo;ve always admired your persistence, discipline, and the genuine kindness you show to everyone around you. You have such a beautiful way of making people feel welcomed, included, and appreciated, and that&rsquo;s a rare gift.</p>
+              <p>One of my favorite memories with you will always be the &#128077;&#128077; padel moment. It never fails to make me laugh.</p>
+              <p>As you begin this beautiful new chapter with Omar, my heart is so happy for you both. I pray your marriage is filled with endless love, laughter, peace, and support for one another. May you always find comfort in each other, celebrate every milestone together, and continue choosing each other through every season of life.</p>
+              <p>Wishing you a lifetime of happiness, beautiful memories, and countless blessings. Congratulations to you both&hellip; I couldn&rsquo;t be happier for you!</p>
+            </div>
+            <p class="friend-signature">With all my love, Mai</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content friends-content friends-content-alt" id="hania-message">
+      <div class="friends-messages">
+        <header class="friends-messages-head">
+          <p class="message-number">02</p>
+          <div><p class="section-kicker">Press play on this memory</p><h2 class="collection-title">A voice note from Hania.</h2></div>
+        </header>
+        <article class="friend-message friend-message-audio">
+          <figure class="friend-photo">
+            <img src="friends/hania.jpeg" alt="Hania and Menna smiling together by the water">
+            <figcaption>A friendship worth hearing</figcaption>
+          </figure>
+          <div class="friend-letter voice-letter">
+            <p class="letter-label">A voice note from</p>
+            <h3>Hania <span aria-hidden="true">&#10084;</span></h3>
+            <div class="voice-note">
+              <button class="voice-play" type="button" aria-label="Play Hania's voice note"><span aria-hidden="true">&#9654;</span></button>
+              <div><p class="voice-status" aria-live="polite">This memory will play when you reach it.</p><p class="voice-caption">A little piece of Hania, saved for you.</p></div>
+            </div>
+            <audio class="hania-audio" controls preload="metadata">
+              <source src="friends/haniaM.mp3" type="audio/mpeg">
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script>
+    const haniaSection = document.getElementById('hania-message');
+    const haniaAudio = haniaSection.querySelector('.hania-audio');
+    const playButton = haniaSection.querySelector('.voice-play');
+    const voiceStatus = haniaSection.querySelector('.voice-status');
+    const playHania = async () => {
+      try {
+        await haniaAudio.play();
+        haniaSection.classList.remove('needs-audio-click');
+        haniaSection.classList.add('audio-playing');
+        voiceStatus.textContent = 'Hania is speaking...';
+      } catch {
+        haniaSection.classList.add('needs-audio-click');
+        voiceStatus.textContent = 'Tap play to hear Hania\'s message.';
+      }
+    };
+
+    playButton.addEventListener('click', () => haniaAudio.paused ? playHania() : haniaAudio.pause());
+    haniaAudio.addEventListener('play', () => {
+      haniaSection.classList.add('audio-playing');
+      playButton.setAttribute('aria-label', 'Pause Hania\'s voice note');
+    });
+    haniaAudio.addEventListener('pause', () => {
+      haniaSection.classList.remove('audio-playing');
+      playButton.setAttribute('aria-label', 'Play Hania\'s voice note');
+    });
+    haniaAudio.addEventListener('ended', () => {
+      haniaSection.classList.remove('audio-playing');
+      voiceStatus.textContent = 'Play Hania\'s message again.';
+    });
+
+    const audioObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (haniaAudio.ended) haniaAudio.currentTime = 0;
+        playHania();
+      }
+      if (!entry.isIntersecting && !haniaAudio.paused) haniaAudio.pause();
+    }, { threshold: .55 });
+    audioObserver.observe(haniaSection);
+  </script>
+</body>
+</html>
