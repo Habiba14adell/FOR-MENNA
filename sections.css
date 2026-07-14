@@ -47,6 +47,7 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .friends-messages-head h2 { margin:0; font-family:"Italiana",serif; font-size:clamp(2.6rem,5vw,4.8rem); font-weight:400; line-height:.92; }
 .message-number { margin:0; color:#f2cf55; font-family:"Italiana",serif; font-size:clamp(5rem,10vw,8rem); line-height:.7; }
 .friend-message { display:grid; grid-template-columns:minmax(280px,.9fr) minmax(340px,1.1fr); border:1px solid rgba(73,55,43,.18); background:#f5e7d8; box-shadow:10px 12px 0 #f2cf55; }
+.friend-message-reverse .friend-photo { order:2; border-right:0; border-left:1px solid rgba(73,55,43,.18); }
 .friend-photo { min-width:0; margin:0; padding:14px; border-right:1px solid rgba(73,55,43,.18); background:#fffaf2; }
 .friend-photo img { display:block; width:100%; height:100%; min-height:620px; object-fit:cover; object-position:center; }
 .friend-photo figcaption { margin:12px 3px 0; color:#8a7160; font-size:.62rem; letter-spacing:.13em; text-align:center; text-transform:uppercase; }
@@ -97,14 +98,15 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
   .friends-content { padding:55px 16px 75px; }
   .friends-messages-head { grid-template-columns:70px 1fr; gap:14px; }
   .friend-message { grid-template-columns:1fr; box-shadow:6px 7px 0 #f2cf55; }
+  .friend-message-reverse .friend-photo { order:0; border-left:0; }
   .friend-photo { border-right:0; border-bottom:1px solid rgba(73,55,43,.18); }
   .friend-photo img { min-height:0; aspect-ratio:4/5; }
   .friend-letter { padding:32px 24px 38px; }
 }
 
 /* Bridesmaids cover and numbered messages */
-.bridesmaids-page-layout { width:min(1180px,100%); margin:auto; overflow:hidden; border:1px solid rgba(91,65,35,.2); border-radius:5px; background:#fff9ef; box-shadow:0 24px 65px rgba(70,54,42,.18); }
-.bridesmaids-cover { min-height:min(720px,calc(100svh - clamp(20px,6vw,68px))); display:grid; grid-template-columns:1fr 1fr; }
+.bridesmaids-page-layout { --book-height:min(760px,calc(100svh - clamp(20px,6vw,68px))); width:min(1180px,100%); height:var(--book-height); margin:auto; overflow:hidden; border:1px solid rgba(91,65,35,.2); border-radius:5px; background:#fff9ef; box-shadow:0 24px 65px rgba(70,54,42,.18); }
+.bridesmaids-cover { height:100%; display:grid; grid-template-columns:1fr 1fr; }
 .bridesmaids-cover-copy { position:relative; isolation:isolate; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(28px,4vw,48px); overflow:hidden; border-right:8px solid #c9a742; background:#f4d875; box-shadow:inset -14px 0 24px rgba(91,65,35,.12); }
 .bridesmaids-cover-copy::before { content:""; position:absolute; z-index:-1; right:-90px; bottom:8%; width:260px; aspect-ratio:1; border:1px solid rgba(55,67,43,.22); border-radius:50%; box-shadow:0 0 0 34px rgba(255,250,225,.32),0 0 0 35px rgba(55,67,43,.12); }
 .bridesmaids-cover-copy::after { content:"\273F  \2740  \273F"; position:absolute; z-index:-1; left:-18px; bottom:18px; color:rgba(255,251,225,.72); font-family:Georgia,serif; font-size:clamp(3.6rem,7vw,6.2rem); letter-spacing:.08em; line-height:1; transform:rotate(-9deg); }
@@ -115,62 +117,173 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .bridesmaids-title span:nth-child(2) { margin-left:clamp(10px,3vw,38px); color:#fff9e8; font-style:italic; }
 .bridesmaids-stamp { position:absolute; right:0; top:0; width:76px; height:76px; margin:0; display:grid; place-items:center; border:1px solid var(--ink); border-radius:50%; background:#fff7cf; font-size:.62rem; font-weight:500; letter-spacing:.1em; line-height:1.25; text-align:center; text-transform:uppercase; transform:rotate(9deg); box-shadow:4px 4px 0 var(--ink); }
 .bridesmaids-cover .cover-message { max-width:390px; color:#4f493d; }
+.open-memory-book { width:max-content; margin-top:26px; padding:12px 16px 12px 18px; border:1px solid var(--ink); color:var(--ink); background:#fff8df; cursor:pointer; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; transition:.25s ease; }
+.open-memory-book span { display:inline-block; margin-left:12px; transition:.25s ease; }
+.open-memory-book:hover { color:#fffaf0; background:var(--ink); }
+.open-memory-book:hover span { transform:translateX(4px); }
 .bridesmaids-bride { position:relative; min-width:0; margin:0; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; background:linear-gradient(180deg,#f6eadc,#e7d1bb); box-shadow:inset 12px 0 25px rgba(83,61,45,.12); }
 .bridesmaids-bride::before { content:""; position:absolute; left:50%; bottom:-95px; width:86%; aspect-ratio:1; border-radius:50%; background:#f4d875; opacity:.62; transform:translateX(-50%); }
 .bridesmaids-bride img { position:relative; z-index:1; width:min(540px,95%); height:94%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 18px 18px rgba(83,61,45,.14)); }
 .bridesmaids-bride figcaption { position:absolute; z-index:2; right:25px; bottom:25px; margin:0; padding:10px 13px; border:1px solid var(--ink); background:#fff8df; font-size:.65rem; letter-spacing:.06em; line-height:1.45; text-transform:uppercase; transform:rotate(-2deg); }
-.bridesmaids-story { position:relative; isolation:isolate; background:linear-gradient(180deg,#fff9e8 0,#fff5d8 48%,#fff9e8 100%); }
-.bridesmaids-story::before { content:""; position:absolute; z-index:-1; left:clamp(47px,8vw,106px); top:0; bottom:0; width:1px; background:linear-gradient(180deg,transparent,#d9ad28 7%,#d9ad28 93%,transparent); opacity:.42; }
-.bridesmaids-content { position:relative; min-height:calc(100svh - clamp(20px,6vw,68px)); padding:clamp(32px,4.5vh,48px) clamp(40px,6vw,72px); overflow:hidden; background:transparent; }
+.bridesmaids-story { position:relative; isolation:isolate; display:none; height:100%; padding:clamp(28px,4vw,48px) clamp(18px,5vw,58px) 86px; background:linear-gradient(180deg,#e8d6bb,#d7bea0); }
+.book-opened .bridesmaids-cover { display:none; }
+.book-opened .bridesmaids-story { display:block; animation:openBook .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes openBook { from { opacity:0; transform:perspective(1400px) rotateY(-7deg) scale(.97); transform-origin:left center; } }
+.bridesmaids-story::before { display:none; }
+.bridesmaids-content { position:relative; display:none; min-height:0; padding:0; overflow:visible; background:transparent; }
+.bridesmaids-content.active-book-spread { display:block; }
 .bridesmaids-content::before { content:"\273F  \2740"; position:absolute; right:-16px; top:10px; color:rgba(226,183,52,.2); font-family:Georgia,serif; font-size:clamp(4rem,8vw,7rem); letter-spacing:.05em; line-height:1; transform:rotate(10deg); pointer-events:none; }
-.bridesmaids-content + .bridesmaids-content { border-top:1px solid rgba(217,173,40,.2); }
+.bridesmaids-content + .bridesmaids-content { border-top:0; }
 .bridesmaids-content-alternate { background:transparent; }
-.bridesmaids-messages-head { position:relative; display:grid; grid-template-columns:78px 1fr; align-items:end; gap:25px; margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+.bridesmaids-messages-head { display:none; }
 .bridesmaids-messages-head::before { content:""; position:absolute; left:29px; bottom:-6px; width:11px; height:11px; border:1px solid #c79b16; border-radius:50%; background:#fff7d8; box-shadow:0 0 0 6px #fff9e8; }
 .bridesmaids-messages-head .section-kicker { margin-bottom:12px; }
 .bridesmaids-messages-head h2 { margin:0; font-family:"Italiana",serif; font-size:clamp(2.35rem,4vw,3.8rem); font-weight:400; line-height:.92; }
 .bridesmaids-number { margin:0; color:#dfb62e; font-family:"Italiana",serif; font-size:clamp(4rem,7vw,5.8rem); line-height:.7; }
-.bridesmaid-message { position:relative; display:grid; grid-template-columns:minmax(250px,.85fr) minmax(390px,1.15fr); overflow:hidden; border:1px solid rgba(92,68,40,.23); border-radius:5px 12px 12px 5px; background:linear-gradient(90deg,#fffdf6 0,#fff9e9 49.5%,#f2e6ca 50%,#fff9e9 50.8%,#fffdf6 100%); box-shadow:0 20px 42px rgba(84,61,35,.16),0 5px 0 #d8b64f; }
+.bridesmaid-message { position:relative; display:grid; grid-template-columns:minmax(250px,.85fr) minmax(390px,1.15fr); height:calc(var(--book-height) - clamp(142px,16vw,174px)); overflow:hidden; border:1px solid rgba(92,68,40,.23); border-radius:5px 12px 12px 5px; background:linear-gradient(90deg,#fffdf6 0,#fff9e9 49.5%,#f2e6ca 50%,#fff9e9 50.8%,#fffdf6 100%); box-shadow:0 20px 42px rgba(84,61,35,.16),0 5px 0 #d8b64f; }
 .bridesmaid-message::before { content:""; position:absolute; z-index:4; left:50%; top:0; bottom:0; width:22px; transform:translateX(-50%); background:linear-gradient(90deg,transparent,rgba(81,57,31,.12),rgba(255,255,255,.58),rgba(81,57,31,.1),transparent); pointer-events:none; }
 .bridesmaid-message::after { content:attr(data-pages); position:absolute; z-index:5; left:50%; bottom:9px; width:88%; transform:translateX(-50%); color:#9c8c73; font-family:"Italiana",serif; font-size:.68rem; letter-spacing:.18em; text-align:center; word-spacing:430px; pointer-events:none; }
 .bridesmaids-content-alternate .bridesmaid-message { background:linear-gradient(90deg,#fffdf6 0,#fff9e9 49.5%,#f2e6ca 50%,#fff9e9 50.8%,#fffdf6 100%); box-shadow:0 20px 42px rgba(84,61,35,.16),0 5px 0 #d8b64f; }
-.bridesmaid-photo { min-width:0; margin:0; padding:18px 18px 34px; border-right:0; background:transparent; }
-.bridesmaid-photo img { display:block; width:100%; height:clamp(480px,61vh,590px); object-fit:cover; object-position:center; }
+.bridesmaids-content:nth-of-type(1) .bridesmaid-message { background:linear-gradient(90deg,#fffdf7 0,#fffaf0 49.5%,#e8ddc7 50%,#fffaf0 50.8%,#fffdf7 100%); }
+.bridesmaids-content:nth-of-type(2) .bridesmaid-message { background:radial-gradient(circle at 15% 20%,rgba(207,164,54,.08) 0 1px,transparent 1.5px),linear-gradient(90deg,#fff8d9 0,#fff3c4 49.5%,#dfcf9c 50%,#fff3c4 50.8%,#fff8d9 100%); background-size:18px 18px,auto; }
+.bridesmaids-content:nth-of-type(3) .bridesmaid-message { background:repeating-linear-gradient(0deg,rgba(123,96,64,.035) 0 1px,transparent 1px 5px),linear-gradient(90deg,#f8f0e5 0,#fffaf2 49.5%,#dfd2c0 50%,#fffaf2 50.8%,#f8f0e5 100%); }
+.bridesmaid-photo { min-width:0; margin:0; padding:18px 18px 34px; border-right:0; background:rgba(238,220,193,.42); }
+.bridesmaid-photo img { display:block; width:100%; height:calc(100% - 25px); object-fit:contain; object-position:center; }
 .bridesmaid-photo figcaption { margin:8px 3px 0; color:#7f796a; font-size:.62rem; letter-spacing:.13em; text-align:center; text-transform:uppercase; }
 .bridesmaid-message-reverse .bridesmaid-photo { order:2; border:0; }
-.bridesmaid-letter { padding:clamp(28px,3.5vw,45px) clamp(28px,4vw,50px) 40px; }
+.bridesmaid-message-reverse { grid-template-columns:minmax(390px,1.15fr) minmax(250px,.85fr); }
+.bridesmaid-letter { padding:clamp(24px,3vw,40px) clamp(28px,4vw,50px) 40px; overflow-y:auto; }
 .bridesmaid-letter h3 { margin:0 0 20px; font-family:"Italiana",serif; font-size:clamp(2.7rem,4vw,4rem); font-weight:400; line-height:1; }
 .bridesmaid-letter h3 span { color:#d69a00; font-family:"DM Sans",sans-serif; font-size:.38em; vertical-align:top; }
 .bridesmaid-letter-copy { padding-block:25px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .bridesmaid-letter-copy p { margin:0 0 18px; color:#554f43; font-size:clamp(.86rem,1.1vw,.96rem); font-weight:300; line-height:1.8; }
+.bridesmaids-content-alternate .bridesmaid-letter { padding-top:clamp(20px,2.4vw,32px); }
+.bridesmaids-content-alternate .bridesmaid-letter h3 { margin-bottom:13px; font-size:clamp(2.45rem,3.5vw,3.5rem); }
+.bridesmaids-content-alternate .bridesmaid-letter-copy { padding-block:16px; }
+.bridesmaids-content-alternate .bridesmaid-letter-copy p { margin-bottom:10px; font-size:clamp(.74rem,.9vw,.84rem); line-height:1.52; }
+.bridesmaids-content-alternate .bridesmaid-signature { margin-top:15px; font-size:1.1rem; }
 .bridesmaid-letter-copy p:last-child { margin-bottom:0; }
 .bridesmaid-letter-copy span { color:#d69a00; }
 .bridesmaid-signature { margin:24px 0 0; font-family:"Italiana",serif; font-size:1.3rem; }
 .bridesmaid-video-page { min-width:0; margin:0; padding:18px 18px 34px; }
-.bridesmaid-video-page video { display:block; width:100%; height:clamp(480px,61vh,590px); border:1px solid rgba(73,55,43,.14); background:#251e19; object-fit:contain; }
+.bridesmaid-video-page video { display:block; width:100%; height:calc(100% - 25px); border:1px solid rgba(73,55,43,.14); background:#251e19; object-fit:contain; }
 .bridesmaid-video-page figcaption { margin:8px 3px 0; color:#7f796a; font-size:.62rem; letter-spacing:.13em; text-align:center; text-transform:uppercase; }
 .video-dedication { display:flex; flex-direction:column; justify-content:center; text-align:center; }
 .video-dedication .letter-label { text-align:center; }
 .video-keepsake-copy { margin:18px auto 26px; color:#6c5a47; font-family:"Italiana",serif; font-size:clamp(1.5rem,2.5vw,2.2rem); line-height:1.35; }
+.book-navigation { position:absolute; left:50%; bottom:22px; z-index:8; display:flex; align-items:center; gap:20px; transform:translateX(-50%); }
+.book-navigation p { min-width:150px; margin:0; color:#49372b; text-align:center; }
+.book-current-title { display:block; font-family:"Italiana",serif; font-size:1.15rem; }
+.book-current-pages { display:block; margin-top:3px; font-size:.58rem; letter-spacing:.18em; }
+.book-nav-button { width:42px; height:42px; padding:0; border:1px solid rgba(73,55,43,.4); border-radius:50%; color:#49372b; background:#fff7d8; cursor:pointer; font-size:1.1rem; transition:.25s ease; }
+.book-nav-button:hover { color:#fffaf0; background:#49372b; transform:translateY(-2px); }
+.book-close { position:absolute; left:calc(100% + 18px); }
 @media (max-width:760px) {
+  .bridesmaids-page-layout { --book-height:calc(100svh - 20px); }
   .bridesmaids-cover { min-height:0; grid-template-columns:1fr; }
   .bridesmaids-cover-copy { min-height:560px; }
   .bridesmaids-bride { min-height:540px; }
   .bridesmaids-title { font-size:clamp(3rem,14vw,5rem); }
   .bridesmaids-stamp { top:8px; width:68px; height:68px; }
-  .bridesmaids-content { min-height:0; padding:55px 16px 75px; }
+  .bridesmaids-story { padding:18px 10px 82px; }
+  .bridesmaids-content { min-height:0; padding:0; }
   .bridesmaids-story::before { left:50px; }
   .bridesmaids-messages-head { grid-template-columns:70px 1fr; gap:14px; }
-  .bridesmaid-message { grid-template-columns:1fr; border-radius:5px; background:#fffdf6; box-shadow:0 14px 28px rgba(84,61,35,.15),0 5px 0 #d8b64f; }
+  .bridesmaid-message { grid-template-columns:1fr; height:calc(var(--book-height) - 112px); overflow-y:auto; border-radius:5px; background:#fffdf6; box-shadow:0 14px 28px rgba(84,61,35,.15),0 5px 0 #d8b64f; }
   .bridesmaid-message::before { display:none; }
   .bridesmaid-message::after { width:auto; word-spacing:normal; }
   .bridesmaids-content-alternate .bridesmaid-message { background:#fffdf6; box-shadow:0 14px 28px rgba(84,61,35,.15),0 5px 0 #d8b64f; }
   .bridesmaid-photo { border-right:0; border-bottom:1px solid rgba(73,55,43,.18); }
   .bridesmaid-message-reverse .bridesmaid-photo { order:0; border-left:0; border-bottom:1px solid rgba(73,55,43,.18); }
+  .bridesmaid-message-reverse { grid-template-columns:1fr; }
   .bridesmaid-photo img { height:auto; aspect-ratio:4/5; }
   .bridesmaid-video-page { padding:12px 12px 32px; }
   .bridesmaid-video-page video { height:auto; max-height:70svh; }
   .bridesmaid-letter { padding:32px 24px 38px; }
+  .book-close { position:static; }
+}
+
+/* Bridesmaids scrapbook timeline */
+html { scroll-behavior:smooth; }
+.bridesmaids-page-layout { width:min(1180px,100%); height:auto; overflow:hidden; border-radius:5px; }
+.bridesmaids-cover { min-height:calc(100svh - clamp(20px,6vw,68px)); height:auto; }
+.open-memory-book { display:inline-block; color:var(--ink); text-decoration:none; }
+.bridesmaids-story { display:block; height:auto; padding:70px clamp(24px,7vw,90px) 95px; background:linear-gradient(180deg,#fff8df,#f7e8b7 48%,#fff9e8); }
+.bridesmaids-story::before { display:block; left:50%; top:55px; bottom:55px; width:5px; border-radius:999px; background:linear-gradient(#dfb62e,#f4d875,#dfb62e); opacity:.7; transform:translateX(-50%); }
+.bridesmaids-content,
+.bridesmaids-content.active-book-spread { display:block; min-height:calc(100svh - 90px); padding:55px 0 75px; overflow:visible; }
+.bridesmaids-content::before { content:""; z-index:4; left:50%; right:auto; top:86px; width:19px; height:19px; border:5px solid #fff8df; border-radius:50%; background:#d8a916; box-shadow:0 0 0 1px rgba(73,55,43,.2); transform:translateX(-50%); }
+.bridesmaids-content + .bridesmaids-content { border-top:0; }
+.bridesmaids-messages-head { display:grid; grid-template-columns:90px 1fr; width:min(760px,78%); margin:0 auto 52px; padding:0 0 20px; background:transparent; }
+.bridesmaids-messages-head::before { display:none; }
+.bridesmaids-messages-head h2 { font-size:clamp(2.7rem,5vw,4.8rem); }
+.bridesmaid-message,
+.bridesmaids-content:nth-of-type(1) .bridesmaid-message,
+.bridesmaids-content:nth-of-type(2) .bridesmaid-message,
+.bridesmaids-content:nth-of-type(3) .bridesmaid-message,
+.bridesmaids-content-alternate .bridesmaid-message { grid-template-columns:minmax(280px,.9fr) minmax(360px,1.1fr); gap:clamp(40px,7vw,90px); height:auto; min-height:570px; overflow:visible; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.bridesmaid-message::before,
+.bridesmaid-message::after { display:none; }
+.bridesmaid-photo,
+.bridesmaid-video-page { position:relative; align-self:center; padding:16px 16px 45px; border:0; background:#fffdf8; box-shadow:0 16px 35px rgba(76,54,30,.2); transform:rotate(-2deg); }
+.bridesmaid-photo::before,
+.bridesmaid-video-page::before { content:""; position:absolute; z-index:3; left:50%; top:-16px; width:105px; height:34px; background:rgba(236,205,116,.72); transform:translateX(-50%) rotate(2deg); box-shadow:0 1px 2px rgba(73,55,43,.08); }
+.bridesmaid-photo img { height:min(540px,65svh); background:#f3e5d1; object-fit:contain; }
+.bridesmaid-letter { position:relative; align-self:center; max-height:none; padding:clamp(35px,5vw,60px); overflow:visible; border:1px solid rgba(73,55,43,.14); background:#fffaf0; box-shadow:0 18px 38px rgba(76,54,30,.14); transform:rotate(1.2deg); }
+.bridesmaid-letter::before { content:""; position:absolute; left:22px; right:22px; top:-10px; height:20px; background:repeating-linear-gradient(90deg,transparent 0 18px,rgba(205,171,82,.35) 19px 21px,transparent 22px 35px); }
+.bridesmaids-content-alternate .bridesmaid-message { grid-template-columns:minmax(360px,1.1fr) minmax(280px,.9fr); }
+.bridesmaids-content-alternate .bridesmaid-letter { padding:clamp(32px,4vw,50px); transform:rotate(-1deg); }
+.bridesmaids-content-alternate .bridesmaid-letter h3 { font-size:clamp(2.7rem,4vw,4rem); }
+.bridesmaids-content-alternate .bridesmaid-letter-copy p { font-size:clamp(.82rem,1vw,.92rem); line-height:1.65; }
+.bridesmaid-video-page video { height:min(520px,62svh); }
+.video-dedication { min-height:470px; }
+@media (min-width:761px) {
+  html { scroll-snap-type:y proximity; }
+  .bridesmaids-cover,
+  .bridesmaids-content { scroll-snap-align:start; }
+  .bridesmaids-content,
+  .bridesmaids-content.active-book-spread { height:calc(100svh - clamp(20px,6vw,68px)); min-height:0; padding:clamp(20px,3vh,30px) 0; overflow:hidden; }
+  .bridesmaids-messages { height:100%; display:flex; flex-direction:column; }
+  .bridesmaids-messages-head { flex:0 0 auto; grid-template-columns:72px 1fr; width:min(900px,82%); margin:0 auto clamp(16px,2.5vh,24px); padding-bottom:12px; gap:18px; }
+  .bridesmaids-messages-head h2 { font-size:clamp(2.4rem,3.8vw,3.7rem); line-height:.9; }
+  .bridesmaids-number { font-size:clamp(3.7rem,6vw,5rem); }
+  .bridesmaid-message,
+  .bridesmaids-content:nth-of-type(1) .bridesmaid-message,
+  .bridesmaids-content:nth-of-type(2) .bridesmaid-message,
+  .bridesmaids-content:nth-of-type(3) .bridesmaid-message,
+  .bridesmaids-content-alternate .bridesmaid-message { flex:1; min-height:0; grid-template-columns:minmax(250px,.9fr) minmax(360px,1.1fr); gap:clamp(28px,5vw,60px); }
+  .bridesmaids-content-alternate .bridesmaid-message { grid-template-columns:minmax(360px,1.1fr) minmax(250px,.9fr); }
+  .bridesmaid-photo,
+  .bridesmaid-video-page { height:100%; min-height:0; padding:12px 12px 34px; }
+  .bridesmaid-photo img,
+  .bridesmaid-video-page video { height:calc(100% - 20px); max-height:none; }
+  .bridesmaid-letter { max-height:100%; min-height:0; padding:clamp(24px,3vh,34px) clamp(28px,3vw,42px); overflow:hidden; }
+  .bridesmaid-letter h3 { margin-bottom:12px; font-size:clamp(2.45rem,3.4vw,3.5rem); }
+  .bridesmaid-letter-copy { padding-block:13px; }
+  .bridesmaid-letter-copy p,
+  .bridesmaids-content-alternate .bridesmaid-letter-copy p { margin-bottom:9px; font-size:clamp(.72rem,.82vw,.82rem); line-height:1.48; }
+  .bridesmaid-signature,
+  .bridesmaids-content-alternate .bridesmaid-signature { margin-top:12px; font-size:1.05rem; }
+  .video-dedication { min-height:0; }
+}
+@media (max-width:760px) {
+  .bridesmaids-page-layout { height:auto; }
+  .bridesmaids-cover { min-height:auto; }
+  .bridesmaids-story { padding:45px 14px 65px; }
+  .bridesmaids-story::before { left:31px; transform:none; }
+  .bridesmaids-content,
+  .bridesmaids-content.active-book-spread { min-height:0; padding:45px 10px 65px 38px; }
+  .bridesmaids-content::before { left:8px; top:67px; transform:none; }
+  .bridesmaids-messages-head { grid-template-columns:62px 1fr; width:100%; margin-bottom:35px; }
+  .bridesmaid-message,
+  .bridesmaids-content:nth-of-type(1) .bridesmaid-message,
+  .bridesmaids-content:nth-of-type(2) .bridesmaid-message,
+  .bridesmaids-content:nth-of-type(3) .bridesmaid-message,
+  .bridesmaids-content-alternate .bridesmaid-message { grid-template-columns:1fr; gap:35px; min-height:0; overflow:visible; }
+  .bridesmaid-message-reverse .bridesmaid-photo { order:0; }
+  .bridesmaid-photo img { height:auto; max-height:none; aspect-ratio:auto; }
+  .bridesmaid-letter { padding:34px 25px; overflow:visible; }
+  .bridesmaid-video-page video { height:auto; max-height:68svh; }
 }
 
 /* Family secret-message collection */

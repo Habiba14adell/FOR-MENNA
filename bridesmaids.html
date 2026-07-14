@@ -16,6 +16,7 @@
           <h1 class="bridesmaids-title"><span>By your side.</span><span>For all of it.</span></h1>
           <p class="bridesmaids-stamp">Bride<br>crew</p>
           <p class="cover-message">For the women bringing the calm, the chaos, and everything needed to make the best memories.</p>
+          <a class="open-memory-book" href="#bridesmaids-story">See the memories <span aria-hidden="true">&darr;</span></a>
         </div>
       </div>
       <figure class="bridesmaids-bride">
@@ -24,8 +25,8 @@
       </figure>
     </header>
 
-    <div class="bridesmaids-story">
-    <section class="bridesmaids-content">
+    <div class="bridesmaids-story" id="bridesmaids-story">
+    <section class="bridesmaids-content active-book-spread" data-book-title="Zeina" data-book-pages="01 - 02">
       <div class="bridesmaids-messages">
         <header class="bridesmaids-messages-head">
           <p class="bridesmaids-number">01</p>
@@ -49,7 +50,7 @@
       </div>
     </section>
 
-    <section class="bridesmaids-content bridesmaids-content-alternate">
+    <section class="bridesmaids-content bridesmaids-content-alternate" data-book-title="Hania" data-book-pages="03 - 04">
       <div class="bridesmaids-messages">
         <header class="bridesmaids-messages-head">
           <p class="bridesmaids-number">02</p>
@@ -76,7 +77,7 @@
       </div>
     </section>
 
-    <section class="bridesmaids-content bridesmaids-content-video">
+    <section class="bridesmaids-content bridesmaids-content-video" data-book-title="Lolo &amp; Mariam" data-book-pages="05 - 06">
       <div class="bridesmaids-messages">
         <header class="bridesmaids-messages-head">
           <p class="bridesmaids-number">03</p>
@@ -119,6 +120,7 @@
       mediaObserver.observe(media);
       media.addEventListener('play', () => media.classList.remove('autoplay-blocked'));
     });
+
   </script>
 </body>
 </html>

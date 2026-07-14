@@ -80,6 +80,33 @@
         </article>
       </div>
     </section>
+
+    <section class="content friends-content" id="aisha-message">
+      <div class="friends-messages">
+        <header class="friends-messages-head">
+          <p class="message-number">03</p>
+          <div><p class="section-kicker">Press play on this memory</p><h2 class="collection-title">A voice note from Aisha.</h2></div>
+        </header>
+        <article class="friend-message friend-message-audio friend-message-reverse">
+          <figure class="friend-photo">
+            <img src="friends/aisha.jpeg" alt="Aisha and Menna smiling together with a celebration cake">
+            <figcaption>A friendship worth hearing</figcaption>
+          </figure>
+          <div class="friend-letter voice-letter">
+            <p class="letter-label">A voice note from</p>
+            <h3>Aisha <span aria-hidden="true">&#10084;</span></h3>
+            <div class="voice-note">
+              <button class="voice-play aisha-play" type="button" aria-label="Play Aisha's voice note"><span aria-hidden="true">&#9654;</span></button>
+              <div><p class="voice-status aisha-status" aria-live="polite">This memory will play when you reach it.</p><p class="voice-caption">A little piece of Aisha, saved for you.</p></div>
+            </div>
+            <audio class="aisha-audio" controls preload="metadata">
+              <source src="friends/aisha.mp4" type="audio/mp4">
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
   <script>
     const haniaSection = document.getElementById('hania-message');
@@ -120,6 +147,44 @@
       if (!entry.isIntersecting && !haniaAudio.paused) haniaAudio.pause();
     }, { threshold: .55 });
     audioObserver.observe(haniaSection);
+
+    const aishaSection = document.getElementById('aisha-message');
+    const aishaAudio = aishaSection.querySelector('.aisha-audio');
+    const aishaButton = aishaSection.querySelector('.aisha-play');
+    const aishaStatus = aishaSection.querySelector('.aisha-status');
+    const playAisha = async () => {
+      try {
+        await aishaAudio.play();
+        aishaSection.classList.remove('needs-audio-click');
+        aishaSection.classList.add('audio-playing');
+        aishaStatus.textContent = 'Aisha is speaking...';
+      } catch {
+        aishaSection.classList.add('needs-audio-click');
+        aishaStatus.textContent = 'Tap play to hear Aisha\'s message.';
+      }
+    };
+    aishaButton.addEventListener('click', () => aishaAudio.paused ? playAisha() : aishaAudio.pause());
+    aishaAudio.addEventListener('play', () => {
+      aishaSection.classList.add('audio-playing');
+      aishaButton.setAttribute('aria-label', 'Pause Aisha\'s voice note');
+    });
+    aishaAudio.addEventListener('pause', () => {
+      aishaSection.classList.remove('audio-playing');
+      aishaButton.setAttribute('aria-label', 'Play Aisha\'s voice note');
+    });
+    aishaAudio.addEventListener('ended', () => {
+      aishaSection.classList.remove('audio-playing');
+      aishaStatus.textContent = 'Play Aisha\'s message again.';
+    });
+    const aishaObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (aishaAudio.ended) aishaAudio.currentTime = 0;
+        playAisha();
+      } else if (!aishaAudio.paused) {
+        aishaAudio.pause();
+      }
+    }, { threshold: .55 });
+    aishaObserver.observe(aishaSection);
   </script>
 </body>
 </html>
