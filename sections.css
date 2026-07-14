@@ -168,6 +168,8 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .bridesmaid-video-page { min-width:0; margin:0; padding:18px 18px 34px; }
 .bridesmaid-video-page video { display:block; width:100%; height:calc(100% - 25px); border:1px solid rgba(73,55,43,.14); background:#251e19; object-fit:contain; }
 .bridesmaid-video-page figcaption { margin:8px 3px 0; color:#7f796a; font-size:.62rem; letter-spacing:.13em; text-align:center; text-transform:uppercase; }
+.bridesmaid-video-reverse { grid-template-columns:minmax(360px,1.1fr) minmax(280px,.9fr); }
+.bridesmaid-video-reverse .bridesmaid-video-page { order:2; transform:rotate(2deg); }
 .video-dedication { display:flex; flex-direction:column; justify-content:center; text-align:center; }
 .video-dedication .letter-label { text-align:center; }
 .video-keepsake-copy { margin:18px auto 26px; color:#6c5a47; font-family:"Italiana",serif; font-size:clamp(1.5rem,2.5vw,2.2rem); line-height:1.35; }
@@ -253,6 +255,7 @@ html { scroll-behavior:smooth; }
   .bridesmaids-content:nth-of-type(3) .bridesmaid-message,
   .bridesmaids-content-alternate .bridesmaid-message { flex:1; min-height:0; grid-template-columns:minmax(250px,.9fr) minmax(360px,1.1fr); gap:clamp(28px,5vw,60px); }
   .bridesmaids-content-alternate .bridesmaid-message { grid-template-columns:minmax(360px,1.1fr) minmax(250px,.9fr); }
+  .bridesmaid-video-reverse { grid-template-columns:minmax(360px,1.1fr) minmax(250px,.9fr); }
   .bridesmaid-photo,
   .bridesmaid-video-page { height:100%; min-height:0; padding:12px 12px 34px; }
   .bridesmaid-photo img,
@@ -280,6 +283,8 @@ html { scroll-behavior:smooth; }
   .bridesmaids-content:nth-of-type(2) .bridesmaid-message,
   .bridesmaids-content:nth-of-type(3) .bridesmaid-message,
   .bridesmaids-content-alternate .bridesmaid-message { grid-template-columns:1fr; gap:35px; min-height:0; overflow:visible; }
+  .bridesmaid-video-reverse { grid-template-columns:1fr; }
+  .bridesmaid-video-reverse .bridesmaid-video-page { order:0; }
   .bridesmaid-message-reverse .bridesmaid-photo { order:0; }
   .bridesmaid-photo img { height:auto; max-height:none; aspect-ratio:auto; }
   .bridesmaid-letter { padding:34px 25px; overflow:visible; }
