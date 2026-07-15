@@ -63,6 +63,10 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .menna-mazhar-copy p { font-size:clamp(.9rem,1.15vw,1rem); line-height:1.75; }
 .menna-mazhar-copy p:first-child,
 .menna-mazhar-copy p:last-child { color:var(--ink); font-family:"Italiana",serif; font-size:clamp(1.25rem,2vw,1.65rem); }
+.arabic-friend-copy { text-align:right; }
+.arabic-friend-copy p { margin-bottom:20px; color:#55483f; font-family:Tahoma,"DM Sans",sans-serif; font-size:clamp(1rem,1.45vw,1.2rem); font-weight:400; line-height:2; }
+.arabic-friend-copy p:first-child { color:var(--ink); font-size:clamp(1.3rem,2vw,1.7rem); }
+.arabic-friend-signature { font-family:Tahoma,"DM Sans",sans-serif; text-align:right; }
 .letter-greeting span { color:#d69a00; font-family:"DM Sans",sans-serif; font-size:.72em; }
 .friend-signature { margin:30px 0 0; font-family:"Italiana",serif; font-size:1.35rem; }
 .voice-letter { display:flex; flex-direction:column; justify-content:center; }
@@ -196,6 +200,12 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .audio-keepsake-mark i:nth-child(3),.audio-keepsake-mark i:nth-child(5) { height:65px; }
 .audio-keepsake-mark i:nth-child(4) { height:38px; }
 .audio-keepsake-copy { margin:0; color:#6c5a47; font-family:"Italiana",serif; font-size:clamp(1.35rem,2.2vw,1.9rem); line-height:1.4; }
+.nouran-letter-copy .nouran-greeting,
+.nouran-letter-copy .nouran-ending { color:#49372b; font-family:"Italiana",serif; font-size:clamp(1.15rem,1.8vw,1.45rem); }
+.bridesmaid-message.bridesmaid-text-only { width:min(780px,100%); margin:auto; grid-template-columns:1fr; }
+.rana-letter { width:100%; transform:rotate(-.7deg); }
+.rana-letter-copy p { font-size:clamp(.9rem,1.2vw,1.02rem); line-height:1.75; }
+.rana-letter-copy .rana-greeting { color:#49372b; font-family:"Italiana",serif; font-size:clamp(1.3rem,2vw,1.7rem); }
 .book-navigation { position:absolute; left:50%; bottom:22px; z-index:8; display:flex; align-items:center; gap:20px; transform:translateX(-50%); }
 .book-navigation p { min-width:150px; margin:0; color:#49372b; text-align:center; }
 .book-current-title { display:block; font-family:"Italiana",serif; font-size:1.15rem; }
@@ -366,6 +376,42 @@ body.modal-open { overflow:hidden; }
 .media-frame audio { display:block; width:100%; margin-top:15px; }
 .media-note { margin:13px 0 0; color:#8b7665; font-size:.76rem; line-height:1.5; }
 .media-note strong { color:#654b39; font-weight:500; }
+
+/* Family keepsake theme */
+.family-page { background:#fff9e8; }
+.family-intro { overflow:hidden; background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.7),transparent 28%),linear-gradient(135deg,#f2cf55,#f7dfa0 48%,#fff4dc); }
+.family-intro::before { content:"FAMILY"; position:absolute; right:-20px; bottom:-28px; color:rgba(255,255,255,.3); font-family:"Italiana",serif; font-size:clamp(6rem,16vw,13rem); line-height:1; }
+.family-intro::after { content:""; position:absolute; left:-75px; top:18%; width:220px; aspect-ratio:1; border:1px solid rgba(73,55,43,.14); border-radius:50%; box-shadow:0 0 0 28px rgba(255,250,225,.28); }
+.family-intro-copy,.family-intro .back,.family-intro .scroll-cue { position:relative; z-index:1; }
+.family-intro h1 { color:#fffaf0; text-shadow:2px 3px 0 rgba(73,55,43,.18); }
+.family-collection { background:linear-gradient(180deg,#fff9ed,#f8ead8); }
+.memory-grid { gap:20px; }
+.memory-card { border-radius:6px; background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
+.memory-card:nth-child(even) { background:#f7eadf; box-shadow:8px 9px 0 rgba(240,167,160,.48); }
+.memory-card[data-memory^="family-"] { display:none; }
+.lock-icon { border-color:#d4a61e; color:#bd8e00; background:#fff4c5; }
+.unlock-form button { background:#49372b; }
+.unlock-form button:hover { background:#d49d00; }
+.memory-card.unlocked .mariam-letter { width:min(940px,calc(100vw - 34px)); }
+.memory-card.unlocked .mariam-letter { color:#49372b; background:linear-gradient(145deg,#fffaf2,#f5e5d2); }
+.mariam-letter h3 { margin-bottom:26px; font-size:clamp(2.5rem,5vw,4.5rem); }
+.mariam-photo { float:left; width:min(310px,42%); margin:0 30px 20px 0; padding:11px 11px 30px; background:#fff; box-shadow:0 12px 28px rgba(73,55,43,.16); transform:rotate(-1.5deg); }
+.mariam-photo img { display:block; width:100%; max-height:400px; object-fit:cover; }
+.mariam-photo figcaption { margin-top:10px; color:#8b7665; font-size:.62rem; letter-spacing:.12em; text-align:center; text-transform:uppercase; }
+.mariam-letter-copy p { margin:0 0 16px; color:#604f43; font-size:.9rem; font-weight:300; line-height:1.72; }
+.mariam-letter-copy .mariam-greeting { color:#49372b; font-family:"Italiana",serif; font-size:1.7rem; }
+.mariam-letter-copy .mariam-signature { color:#49372b; font-family:"Italiana",serif; font-size:1.3rem; }
+.mariam-letter-copy .arabic-blessing { clear:both; margin-top:25px; padding:20px; border-block:1px solid rgba(73,55,43,.16); color:#49372b; font-family:serif; font-size:1.22rem; line-height:2; text-align:center; }
+.memory-card.unlocked .shahd-letter { width:min(880px,calc(100vw - 34px)); }
+.shahd-video-frame video { width:100%; max-height:62svh; object-fit:contain; background:#211a16; }
+.shahd-letter .bridesmaid-signature { text-align:center; }
+.family-name-card { display:block; }
+.family-name-card-inner { min-height:470px; padding:34px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.family-name-card-inner .card-number { position:absolute; top:34px; }
+.family-initial { width:110px; height:110px; margin-bottom:25px; display:grid; place-items:center; border:1px solid #d3a920; border-radius:50%; color:#b78800; background:#fff3bd; font-family:"Italiana",serif; font-size:4.4rem; box-shadow:0 0 0 9px rgba(242,207,85,.2); }
+.family-name-card-inner .section-kicker { margin-bottom:10px; }
+.family-name-card-inner h3 { margin:0 0 12px; font-family:"Italiana",serif; font-size:clamp(2rem,3vw,3rem); font-weight:400; }
+.family-name-card-inner > p:last-child { margin:0; color:#8a7768; font-size:.86rem; }
 @media (max-width:760px) {
   .family-intro { min-height:calc(100svh - 20px); padding:28px 24px 42px; }
   .family-intro h1 { margin-bottom:30px; }
@@ -373,4 +419,6 @@ body.modal-open { overflow:hidden; }
   .memory-card, .lock-view, .memory-content { min-height:430px; }
   .family-collection { padding-inline:14px; }
   .unlock-form button { padding-inline:14px; }
+  .mariam-photo { float:none; width:100%; margin:0 0 28px; }
+  .mariam-letter-copy p { font-size:.86rem; }
 }

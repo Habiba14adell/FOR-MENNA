@@ -44,13 +44,16 @@ function closeLetter() {
 
 cards.forEach(card => {
   const form = card.querySelector('.unlock-form');
+  if (!form) return;
   const input = form.querySelector('input');
   const status = form.querySelector('.code-status');
 
   form.addEventListener('submit', event => {
     event.preventDefault();
-    const entered = input.value.trim().toUpperCase();
-    if (entered === card.dataset.code.toUpperCase()) {
+    const normalizeCode = value => value.trim().replace(/\s+/g, ' ').toUpperCase();
+    const entered = normalizeCode(input.value);
+    const acceptedCodes = card.dataset.code.split('|').map(normalizeCode);
+    if (acceptedCodes.includes(entered)) {
       status.textContent = 'Unlocked with love.';
       status.className = 'code-status success';
       unlockCard(card);
