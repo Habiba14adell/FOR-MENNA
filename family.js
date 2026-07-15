@@ -21,6 +21,13 @@ function unlockCard(card) {
   const letter = card.querySelector('.memory-content');
   letter.tabIndex = -1;
   letter.focus();
+  const media = card.querySelector('video, audio');
+  if (media) {
+    document.querySelectorAll('video, audio').forEach(otherMedia => {
+      if (otherMedia !== media && !otherMedia.paused) otherMedia.pause();
+    });
+    media.play().catch(() => media.classList.add('autoplay-blocked'));
+  }
 }
 
 function closeLetter() {
@@ -66,4 +73,8 @@ cards.forEach(card => {
 backdrop.addEventListener('click', closeLetter);
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') closeLetter();
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) document.querySelectorAll('video, audio').forEach(media => media.pause());
 });

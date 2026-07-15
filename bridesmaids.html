@@ -124,32 +124,86 @@
         </article>
       </div>
     </section>
+
+    <section class="bridesmaids-content bridesmaids-content-audio" data-book-title="Sohila" data-book-pages="09 - 10">
+      <div class="bridesmaids-messages">
+        <header class="bridesmaids-messages-head">
+          <p class="bridesmaids-number">05</p>
+          <div><p class="section-kicker">From the bride crew</p><h2>A voice note from Sohila.</h2></div>
+        </header>
+        <article class="bridesmaid-message bridesmaid-audio-spread" data-pages="09  /  10">
+          <figure class="bridesmaid-photo">
+            <img src="bridesmaids/sohila.jpeg" alt="Sohila and Menna taking a mirror photo together">
+            <figcaption>A friendship worth hearing</figcaption>
+          </figure>
+          <div class="bridesmaid-letter bridesmaid-audio-letter">
+            <p class="letter-label">A voice note from</p>
+            <h3>Sohila <span aria-hidden="true">&#10084;</span></h3>
+            <div class="audio-keepsake-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="audio-keepsake-copy">A little piece of Sohila,<br>saved especially for you.</p>
+            <audio class="viewport-media" controls preload="metadata">
+              <source src="bridesmaids/sohila.mp3" type="audio/mpeg">
+              Your browser does not support audio playback.
+            </audio>
+            <p class="bridesmaid-signature">With all my love, Sohila</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bridesmaids-content bridesmaids-content-video" data-book-title="Fajr" data-book-pages="11 - 12">
+      <div class="bridesmaids-messages">
+        <header class="bridesmaids-messages-head">
+          <p class="bridesmaids-number">06</p>
+          <div><p class="section-kicker">From the bride crew</p><h2>A video from Fajr.</h2></div>
+        </header>
+        <article class="bridesmaid-message bridesmaid-video-spread" data-pages="11  /  12">
+          <figure class="bridesmaid-video-page">
+            <video class="viewport-media" controls playsinline preload="metadata">
+              <source src="bridesmaids/fajr.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+            <figcaption>A moment made for you</figcaption>
+          </figure>
+          <div class="bridesmaid-letter video-dedication">
+            <p class="letter-label">A little something from</p>
+            <h3>Fajr <span aria-hidden="true">&#10084;</span></h3>
+            <p class="video-keepsake-copy">For Menna,<br>a memory to keep close<br>through every chapter.</p>
+            <p class="bridesmaid-signature">Always by your side.</p>
+          </div>
+        </article>
+      </div>
+    </section>
     </div>
   </main>
   <script>
-    const viewportMedia = document.querySelectorAll('.viewport-media');
-    const mediaObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const media = entry.target;
-        if (entry.isIntersecting) {
-          if (media.ended) media.currentTime = 0;
-          media.play().catch(() => media.classList.add('autoplay-blocked'));
-        } else {
-          media.pause();
-        }
-      });
-    }, { threshold: .25 });
+    const viewportMedia = [...document.querySelectorAll('.viewport-media')];
+    const mediaSections = [...document.querySelectorAll('.bridesmaids-content')]
+      .filter(section => section.querySelector('.viewport-media'));
 
-    viewportMedia.forEach(media => {
-      mediaObserver.observe(media);
-      media.addEventListener('play', () => media.classList.remove('autoplay-blocked'));
-    });
-
-    viewportMedia.forEach(media => media.addEventListener('play', () => {
+    const playSectionMedia = section => {
+      const media = section.querySelector('.viewport-media');
       viewportMedia.forEach(otherMedia => {
         if (otherMedia !== media && !otherMedia.paused) otherMedia.pause();
       });
-    }));
+      if (media.ended) media.currentTime = 0;
+      media.play()
+        .then(() => media.classList.remove('autoplay-blocked'))
+        .catch(() => media.classList.add('autoplay-blocked'));
+    };
+
+    const mediaObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const media = entry.target.querySelector('.viewport-media');
+        if (entry.isIntersecting) playSectionMedia(entry.target);
+        else if (!media.paused) media.pause();
+      });
+    }, { threshold: .35 });
+
+    mediaSections.forEach(section => mediaObserver.observe(section));
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) viewportMedia.forEach(media => media.pause());
+    });
 
   </script>
 </body>

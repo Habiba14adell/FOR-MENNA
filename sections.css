@@ -60,6 +60,9 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .friend-letter h3 span { color:#d69a00; font-family:"DM Sans",sans-serif; font-size:.38em; vertical-align:top; }
 .letter-copy p { margin:0 0 17px; color:#604d41; font-size:.9rem; font-weight:300; line-height:1.75; }
 .letter-copy .letter-greeting { margin-bottom:12px; color:var(--ink); font-family:"Italiana",serif; font-size:1.35rem; line-height:1; }
+.menna-mazhar-copy p { font-size:clamp(.9rem,1.15vw,1rem); line-height:1.75; }
+.menna-mazhar-copy p:first-child,
+.menna-mazhar-copy p:last-child { color:var(--ink); font-family:"Italiana",serif; font-size:clamp(1.25rem,2vw,1.65rem); }
 .letter-greeting span { color:#d69a00; font-family:"DM Sans",sans-serif; font-size:.72em; }
 .friend-signature { margin:30px 0 0; font-family:"Italiana",serif; font-size:1.35rem; }
 .voice-letter { display:flex; flex-direction:column; justify-content:center; }
@@ -184,6 +187,15 @@ h1 { margin:30px 0 28px; font-size:clamp(4rem,8vw,8.5rem); line-height:.78; over
 .video-dedication { display:flex; flex-direction:column; justify-content:center; text-align:center; }
 .video-dedication .letter-label { text-align:center; }
 .video-keepsake-copy { margin:18px auto 26px; color:#6c5a47; font-family:"Italiana",serif; font-size:clamp(1.5rem,2.5vw,2.2rem); line-height:1.35; }
+.bridesmaid-audio-letter { display:flex; flex-direction:column; justify-content:center; text-align:center; }
+.bridesmaid-audio-letter .letter-label { text-align:center; }
+.bridesmaid-audio-letter audio { width:100%; margin-top:24px; accent-color:#d69a00; }
+.audio-keepsake-mark { height:72px; margin:22px auto 10px; display:flex; align-items:center; justify-content:center; gap:7px; }
+.audio-keepsake-mark i { width:5px; height:28px; border-radius:999px; background:#d8a916; }
+.audio-keepsake-mark i:nth-child(2),.audio-keepsake-mark i:nth-child(6) { height:48px; }
+.audio-keepsake-mark i:nth-child(3),.audio-keepsake-mark i:nth-child(5) { height:65px; }
+.audio-keepsake-mark i:nth-child(4) { height:38px; }
+.audio-keepsake-copy { margin:0; color:#6c5a47; font-family:"Italiana",serif; font-size:clamp(1.35rem,2.2vw,1.9rem); line-height:1.4; }
 .book-navigation { position:absolute; left:50%; bottom:22px; z-index:8; display:flex; align-items:center; gap:20px; transform:translateX(-50%); }
 .book-navigation p { min-width:150px; margin:0; color:#49372b; text-align:center; }
 .book-current-title { display:block; font-family:"Italiana",serif; font-size:1.15rem; }

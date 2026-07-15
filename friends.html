@@ -158,6 +158,32 @@
         </article>
       </div>
     </section>
+
+    <section class="content friends-content friends-content-alt" id="menna-mazhar-message">
+      <div class="friends-messages">
+        <header class="friends-messages-head">
+          <p class="message-number">06</p>
+          <div><p class="section-kicker">From the friendship files</p><h2 class="collection-title">A message from Menna Mazhar.</h2></div>
+        </header>
+        <article class="friend-message">
+          <figure class="friend-photo">
+            <img src="friends/menna%20mazhar.jpeg" alt="Menna Mazhar and Menna smiling together in a garden">
+            <figcaption>One for the memory book</figcaption>
+          </figure>
+          <div class="friend-letter">
+            <p class="letter-label">A note from</p>
+            <h3>Menna Mazhar <span aria-hidden="true">&#10084;</span></h3>
+            <div class="letter-copy menna-mazhar-copy">
+              <p>Ya Meg msh mesd&rsquo;a enk 3arousaa &#129401;</p>
+              <p>Isa hatb&rsquo;a journey lazeza w sahla w helwaa w tb&rsquo;y mabsoutaa isa ya meg &#9829;&#65039;&#9829;&#65039;</p>
+              <p>I wish you a lifetime of love and happiness lovee &#9829;&#65039;&#9829;&#65039;</p>
+              <p>LOVE YOU &#9829;&#65039;&#128536;</p>
+            </div>
+            <p class="friend-signature">With all my love, Menna Mazhar</p>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
   <script>
     const haniaSection = document.getElementById('hania-message');
@@ -249,7 +275,7 @@
       }
     }, { threshold: .25 });
     nourVideo.addEventListener('play', () => nourVideo.classList.remove('autoplay-blocked'));
-    nourObserver.observe(nourVideo);
+    nourObserver.observe(nourSection.querySelector('.friend-message'));
 
     const israaSection = document.getElementById('israa-message');
     const israaAudio = israaSection.querySelector('.israa-audio');
@@ -295,6 +321,9 @@
         if (otherMedia !== media && !otherMedia.paused) otherMedia.pause();
       });
     }));
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) allFriendMedia.forEach(media => media.pause());
+    });
   </script>
 </body>
 </html>
