@@ -23,11 +23,25 @@
     .me-letter-copy p { margin:0 0 18px; color:#604f43; font-weight:300; line-height:1.85; }
     .me-letter-copy p:last-child { margin-bottom:0; }
     .me-signature { margin:28px 0 0; font-family:"Italiana",serif; font-size:1.45rem; }
+    .me-scrapbook-section { position:relative; isolation:isolate; padding:clamp(58px,8vw,105px) clamp(18px,6vw,74px); background:linear-gradient(180deg,#fff7df,#f3d988); overflow:hidden; }
+    .me-scrapbook-section::before { content:""; position:absolute; z-index:-1; left:50%; top:42px; bottom:42px; width:5px; border-radius:999px; background:linear-gradient(#dfb62e,#fff3bd,#dfb62e); opacity:.7; transform:translateX(-50%); }
+    .me-scrapbook-head { max-width:780px; margin:0 auto clamp(36px,6vw,62px); text-align:center; }
+    .me-scrapbook-head h2 { margin:0; font-family:"Italiana",serif; font-size:clamp(2.8rem,6vw,5.8rem); font-weight:400; line-height:.9; }
+    .me-scrapbook-grid { width:min(980px,100%); margin:auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(20px,3.5vw,38px); }
+    .me-memory-photo { position:relative; margin:0; padding:12px 12px 36px; background:#fffdf8; box-shadow:0 16px 35px rgba(76,54,30,.2); transform:rotate(var(--tilt,-2deg)); }
+    .me-memory-photo::before { content:""; position:absolute; z-index:2; left:50%; top:-14px; width:88px; height:29px; background:rgba(255,244,191,.78); transform:translateX(-50%) rotate(calc(var(--tilt,-2deg) * -1)); box-shadow:0 1px 2px rgba(73,55,43,.08); }
+    .me-memory-photo img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#ead8c4; }
+    .me-memory-photo figcaption { margin-top:10px; color:#8b7665; font-size:.58rem; letter-spacing:.13em; text-align:center; text-transform:uppercase; }
+    .me-memory-photo:nth-child(2n) { --tilt:2.2deg; }
+    .me-memory-photo:nth-child(3n) { --tilt:-1.1deg; }
+    .me-memory-photo:nth-child(5n) { --tilt:1.4deg; }
     @media (max-width:760px) {
       .me-hero { grid-template-columns:1fr; }
       .me-hero-copy { min-height:520px; }
       .me-bride { min-height:460px; }
       .me-letter { padding:28px 22px; box-shadow:6px 7px 0 rgba(242,207,85,.72); }
+      .me-scrapbook-section::before { left:31px; transform:none; }
+      .me-scrapbook-grid { grid-template-columns:1fr; padding-left:26px; }
     }
   </style>
 </head>
@@ -66,6 +80,33 @@
         </div>
         <p class="me-signature">With all my love.</p>
       </article>
+    </section>
+
+    <section class="me-scrapbook-section" aria-labelledby="me-scrapbook-title">
+      <header class="me-scrapbook-head">
+        <p class="me-kicker">Our scrapbook</p>
+        <h2 id="me-scrapbook-title">The little moments that became everything.</h2>
+      </header>
+      <div class="me-scrapbook-grid">
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM (1).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM (2).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM (3).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM.jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (1).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (2).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (3).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (4).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (5).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (6).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (7).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (8).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (9).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (10).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM.jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.56 AM (1).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.56 AM (2).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.56 AM.jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+      </div>
     </section>
   </main>
 </body>
