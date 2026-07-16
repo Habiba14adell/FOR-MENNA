@@ -81,7 +81,7 @@
     .choice-head { display:flex; justify-content:space-between; align-items:end; gap:30px; padding-bottom:34px; border-bottom:1px solid var(--line); }
     .choice-head h2 { margin:0; font-size:clamp(3rem,7vw,6.4rem); line-height:.95; }
     .choice-head p { max-width:330px; margin:0 0 7px; color:#716256; font-weight:300; line-height:1.7; }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); }
+    .cards { display:grid; grid-template-columns:repeat(4,1fr); }
     .card { position:relative; min-height:330px; padding:34px 26px; color:var(--ink); text-decoration:none; border-right:1px solid var(--line); overflow:hidden; transition:.35s ease; }
     .card:last-child { border:0; }
     .card::before { content:""; position:absolute; inset:0; background:rgba(255,255,255,.45); transform:translateY(101%); transition:.4s cubic-bezier(.2,.8,.2,1); }
@@ -126,7 +126,7 @@
     #welcome.opened .inline-gifts { display:block; animation:giftsIn .75s .35s both; }
     @keyframes giftsIn { from { opacity:0; transform:translateY(25px); } }
     .inline-gifts-title { max-width:620px; margin:0 auto 30px; color:#756458; font-family:"Italiana",serif; font-size:clamp(1.25rem,2.5vw,1.7rem); line-height:1.45; }
-    .mini-gifts { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,3vw,26px); }
+    .mini-gifts { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(10px,2.4vw,22px); }
     .mini-gift { position:relative; display:flex; align-items:flex-end; justify-content:center; min-height:150px; padding:94px 12px 19px; overflow:visible; border:1px solid #b9906a; border-radius:13px 13px 25px 25px; color:#fffaf3; background:linear-gradient(135deg,#a7795e,#68463a); text-decoration:none; box-shadow:0 16px 30px rgba(83,57,43,.16); transition:.3s ease; }
     .mini-gift::before { content:""; position:absolute; left:-5px; right:-5px; top:23px; height:31px; border:1px solid #b9906a; border-radius:8px; background:linear-gradient(#b4886b,#795447); transition:.3s ease; }
     .mini-gift::after { content:""; position:absolute; left:50%; top:23px; bottom:0; width:18px; transform:translateX(-50%); border-inline:1px solid rgba(239,210,163,.58); background:rgba(230,193,132,.2); }
@@ -199,6 +199,7 @@
       .ring { left:10%; top:16%; }
       .choice-head { display:block; }
       .choice-head p { margin-top:18px; }
+      .mini-gifts { grid-template-columns:repeat(2,1fr); }
       .cards { grid-template-columns:1fr; }
       .card { min-height:160px; border-right:0; border-bottom:1px solid var(--line); }
       .card h3 { font-size:2.7rem; }
@@ -218,11 +219,12 @@
         <p class="eyebrow">Oops... We have a surprise for you</p>
         <img class="bride-cutout" src="assets/bride-transparent.png" alt="The bride wearing her veil" />
         <div class="inline-gifts" id="inline-gifts" tabindex="-1" aria-live="polite">
-          <p class="inline-gifts-title">Inside are three little gifts, each filled with love and memories just for you.</p>
-          <nav class="mini-gifts" aria-label="Open one of the three gifts">
+          <p class="inline-gifts-title">Inside are four little gifts, each filled with love and memories just for you.</p>
+          <nav class="mini-gifts" aria-label="Open one of the four gifts">
             <a class="mini-gift" href="family.html"><span>Family</span></a>
-            <a class="mini-gift" href="friends.html"><span>Friends</span></a>
+            <a class="mini-gift" href="friends.html"><span>Besties</span></a>
             <a class="mini-gift" href="bridesmaids.html"><span>Bridesmaids</span></a>
+            <a class="mini-gift" href="me.html"><span>From Me</span></a>
           </nav>
         </div>
         <h1 id="welcome-title">This one’s for you.</h1>
@@ -234,12 +236,13 @@
       <div class="choice-wrap">
         <div class="choice-head">
           <h2 id="choices-title">Surprise,<br>it&rsquo;s open!</h2>
-          <p>Inside are three little gifts, each filled with love and memories just for you.</p>
+          <p>Inside are four little gifts, each filled with love and memories just for you.</p>
         </div>
         <nav class="cards" aria-label="Choose a group">
           <a class="card" href="family.html"><span class="number">01 · HOME</span><span class="arrow">↗</span><h3>Family</h3></a>
-          <a class="card" href="friends.html"><span class="number">02 · FOREVER</span><span class="arrow">↗</span><h3>Friends</h3></a>
+          <a class="card" href="friends.html"><span class="number">02 · FOREVER</span><span class="arrow">↗</span><h3>Besties</h3></a>
           <a class="card" href="bridesmaids.html"><span class="number">03 · BY YOUR SIDE</span><span class="arrow">↗</span><h3>Bridesmaids</h3></a>
+          <a class="card" href="me.html"><span class="number">04 · SISTER</span><span class="arrow">↗</span><h3>From Me</h3></a>
         </nav>
       </div>
     </section>
@@ -249,7 +252,7 @@
       <div class="detail-main"><article class="message"><p class="eyebrow">Chapter one</p><h3>Your first home,<br>your forever love.</h3><p>For every hand that held yours, every lesson that shaped you, and every tradition you carry into this beautiful new beginning.</p><p class="signature">Always beside you.</p></article></div>
     </section>
     <section class="screen detail" id="friends" aria-labelledby="friends-title">
-      <aside class="detail-aside"><a class="back" href="#choices">← All chapters</a><h2 id="friends-title">Friends</h2></aside>
+      <aside class="detail-aside"><a class="back" href="#choices">← All chapters</a><h2 id="friends-title">Besties</h2></aside>
       <div class="detail-main"><article class="message"><p class="eyebrow">Chapter two</p><h3>All the laughter,<br>all the years.</h3><p>For the ones who turned ordinary days into favorite memories—and who cannot wait to celebrate the loveliest day with you.</p><p class="signature">Here for every chapter.</p></article></div>
     </section>
     <section class="screen detail" id="bridesmaids" aria-labelledby="bridesmaids-title">

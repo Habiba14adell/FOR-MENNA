@@ -329,15 +329,16 @@ html { scroll-behavior:smooth; }
 .family-intro { position:relative; min-height:calc(100svh - clamp(20px,6vw,68px)); display:flex; flex-direction:column; justify-content:space-between; padding:clamp(28px,5vw,62px); background:radial-gradient(circle at 80% 15%,rgba(255,248,239,.72),transparent 34%),linear-gradient(135deg,var(--sand),var(--cream)); }
 .family-intro-copy { width:min(820px,100%); margin:auto; text-align:center; }
 .family-intro h1 { margin:18px 0 38px; }
-.family-intro h2, .collection-heading h2 { margin:0 0 24px; font-family:"Italiana",serif; font-size:clamp(2.8rem,6vw,6.4rem); font-weight:400; line-height:.92; }
+.family-intro h2 { margin:0 0 24px; font-family:"Italiana",serif; font-size:clamp(2.8rem,6vw,6.4rem); font-weight:400; line-height:.92; }
 .family-intro-copy > p:not(.section-kicker):not(.cover-signature) { max-width:610px; margin-inline:auto; color:var(--muted); font-weight:300; line-height:1.85; }
 .section-kicker { margin:0; color:#927d6b; font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; }
 .scroll-cue { width:max-content; margin-inline:auto; color:var(--ink); text-decoration:none; font-size:.72rem; letter-spacing:.13em; text-transform:uppercase; }
 .scroll-cue span { display:inline-grid; place-items:center; width:34px; height:34px; margin-left:12px; border:1px solid var(--line); border-radius:50%; }
 .family-collection { padding:clamp(60px,8vw,110px) clamp(18px,5vw,65px); background:#f4eadd; }
-.collection-heading { max-width:760px; margin:0 auto 65px; text-align:center; }
+.collection-heading { max-width:980px; margin:0 auto 65px; text-align:center; }
 .collection-heading .section-kicker { margin-bottom:18px; }
-.collection-heading > p:last-child { max-width:620px; margin-inline:auto; color:var(--muted); line-height:1.8; }
+.collection-heading h2 { max-width:860px; margin:0 auto 24px; font-family:"Italiana",serif; font-size:clamp(2.35rem,4.5vw,4.8rem); font-weight:400; line-height:1.02; }
+.collection-heading > p:last-child { max-width:800px; margin-inline:auto; color:var(--muted); font-size:clamp(1rem,1.45vw,1.2rem); line-height:1.8; }
 .memory-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
 .memory-card { position:relative; min-height:470px; overflow:hidden; border:1px solid var(--line); border-radius:22px; background:rgba(255,250,243,.72); box-shadow:0 16px 35px rgba(73,55,43,.07); }
 .lock-view, .memory-content { min-height:470px; padding:clamp(25px,4vw,44px); }
@@ -377,6 +378,26 @@ body.modal-open { overflow:hidden; }
 .media-note { margin:13px 0 0; color:#8b7665; font-size:.76rem; line-height:1.5; }
 .media-note strong { color:#654b39; font-weight:500; }
 
+/* Closing photo hearts */
+.photo-heart-section { min-height:calc(100svh - clamp(20px,6vw,68px)); padding:clamp(48px,6vw,82px) clamp(18px,6vw,78px); display:flex; flex-direction:column; justify-content:center; text-align:center; background:linear-gradient(180deg,#fff8ee,#f7e8bf); overflow:hidden; }
+.photo-heart-section .section-kicker { margin-bottom:15px; }
+.photo-heart-section h2 { max-width:900px; margin:0 auto clamp(24px,4vh,42px); font-family:"Italiana",serif; font-size:clamp(2.25rem,4.4vw,4.35rem); font-weight:400; line-height:.95; }
+.photo-heart { width:min(1040px,92vw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; padding:14px; border:1px solid rgba(73,55,43,.16); border-radius:8px; background:#fffaf0; box-shadow:0 28px 60px rgba(73,55,43,.16); }
+.photo-heart img { width:100%; aspect-ratio:4/5; min-width:0; border-radius:6px; object-fit:cover; background:#e8d6bb; box-shadow:0 10px 22px rgba(73,55,43,.12); animation:photoFloat 5.6s ease-in-out infinite; }
+.photo-heart img:nth-child(2n) { animation-delay:.45s; }
+.photo-heart img:nth-child(3n) { animation-delay:.9s; }
+.photo-heart-friends { background:linear-gradient(180deg,#fff8ee,#fff3d7); }
+.photo-heart-bridesmaids { background:linear-gradient(180deg,#fff9e8,#f7e8b7); }
+@keyframes photoFloat { 0%,100% { transform:translateY(0); filter:saturate(1); } 50% { transform:translateY(-6px); filter:saturate(1.06) brightness(1.02); } }
+@media (prefers-reduced-motion:reduce) {
+  .photo-heart img { animation:none; }
+}
+@media (max-width:760px) {
+  .photo-heart-section { min-height:calc(100svh - 20px); padding:38px 14px 54px; }
+  .photo-heart-section h2 { margin-bottom:26px; font-size:clamp(2.25rem,12vw,3.45rem); }
+  .photo-heart { width:min(560px,94vw); grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; padding:9px; }
+}
+
 /* Family keepsake theme */
 .family-page { background:#fff9e8; }
 .family-intro { overflow:hidden; background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.7),transparent 28%),linear-gradient(135deg,#f2cf55,#f7dfa0 48%,#fff4dc); }
@@ -388,6 +409,15 @@ body.modal-open { overflow:hidden; }
 .memory-grid { gap:20px; }
 .memory-card { border-radius:6px; background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card:nth-child(even) { background:#f7eadf; box-shadow:8px 9px 0 rgba(240,167,160,.48); }
+.memory-card[data-memory="shahd-magdy"] { order:1; }
+.memory-card[data-memory="omar-magdy"] { order:2; }
+.memory-card[data-memory="abdelrhman-magdy"] { order:3; }
+.memory-card[data-memory="mariam-magdy"] { order:4; }
+.memory-card[data-memory="mariam-el-masry"] { order:5; }
+.memory-card[data-memory="omar-hashem"] { order:6; }
+.memory-card[data-memory="abdelrhman-magdy"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
+.memory-card[data-memory="mariam-el-masry"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
+.memory-card[data-memory="omar-hashem"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card[data-memory^="family-"] { display:none; }
 .lock-icon { border-color:#d4a61e; color:#bd8e00; background:#fff4c5; }
 .unlock-form button { background:#49372b; }
@@ -402,9 +432,64 @@ body.modal-open { overflow:hidden; }
 .mariam-letter-copy .mariam-greeting { color:#49372b; font-family:"Italiana",serif; font-size:1.7rem; }
 .mariam-letter-copy .mariam-signature { color:#49372b; font-family:"Italiana",serif; font-size:1.3rem; }
 .mariam-letter-copy .arabic-blessing { clear:both; margin-top:25px; padding:20px; border-block:1px solid rgba(73,55,43,.16); color:#49372b; font-family:serif; font-size:1.22rem; line-height:2; text-align:center; }
-.memory-card.unlocked .shahd-letter { width:min(880px,calc(100vw - 34px)); }
-.shahd-video-frame video { width:100%; max-height:62svh; object-fit:contain; background:#211a16; }
-.shahd-letter .bridesmaid-signature { text-align:center; }
+.memory-card.unlocked .shahd-letter,
+.memory-card.unlocked .abdelrhman-letter,
+.memory-card.unlocked .omar-letter,
+.memory-card.unlocked .omar-hashem-letter,
+.memory-card.unlocked .mariam-el-masry-letter {
+  display:flex;
+  flex-direction:column;
+  width:min(1220px,calc(100vw - 34px));
+  height:min(88svh,850px);
+  padding:clamp(18px,2.4vw,32px);
+  overflow:hidden;
+}
+.shahd-letter .close-memory,
+.abdelrhman-letter .close-memory,
+.omar-letter .close-memory,
+.omar-hashem-letter .close-memory,
+.mariam-el-masry-letter .close-memory {
+  position:absolute;
+  top:clamp(18px,2.4vw,32px);
+  right:clamp(18px,2.4vw,32px);
+  float:none;
+}
+.shahd-letter .section-kicker,
+.abdelrhman-letter .section-kicker,
+.omar-letter .section-kicker,
+.omar-hashem-letter .section-kicker,
+.mariam-el-masry-letter .section-kicker { flex:0 0 auto; padding-top:0; margin:0 62px 8px 0; }
+.shahd-letter h3,
+.abdelrhman-letter h3,
+.omar-letter h3,
+.omar-hashem-letter h3,
+.mariam-el-masry-letter h3 {
+  flex:0 0 auto;
+  margin:0 62px clamp(14px,2vw,24px) 0;
+  font-size:clamp(2.1rem,4vw,3.8rem);
+  line-height:.95;
+}
+.shahd-video-frame,
+.abdelrhman-video-frame,
+.omar-video-frame,
+.omar-hashem-video-frame,
+.mariam-el-masry-video-frame {
+  flex:1 1 auto;
+  min-height:0;
+  margin-top:0;
+  display:flex;
+}
+.shahd-video-frame video,
+.abdelrhman-video-frame video,
+.omar-video-frame video,
+.omar-hashem-video-frame video,
+.mariam-el-masry-video-frame video { width:100%; height:100%; max-height:none; object-fit:contain; background:#211a16; }
+.shahd-letter .bridesmaid-signature,
+.abdelrhman-letter .bridesmaid-signature,
+.omar-letter .bridesmaid-signature,
+.omar-hashem-letter .bridesmaid-signature,
+.mariam-el-masry-letter .bridesmaid-signature { flex:0 0 auto; margin-top:14px; text-align:center; }
+.family-video-note { flex:0 0 auto; max-width:900px; margin:14px auto 0; color:#655244; font-size:clamp(.88rem,1.1vw,1rem); line-height:1.65; text-align:center; }
 .family-name-card { display:block; }
 .family-name-card-inner { min-height:470px; padding:34px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
 .family-name-card-inner .card-number { position:absolute; top:34px; }
@@ -418,7 +503,25 @@ body.modal-open { overflow:hidden; }
   .memory-grid { grid-template-columns:1fr; }
   .memory-card, .lock-view, .memory-content { min-height:430px; }
   .family-collection { padding-inline:14px; }
+  .collection-heading { margin-bottom:42px; }
+  .collection-heading h2 { font-size:clamp(2.15rem,12vw,3.35rem); line-height:1.05; }
+  .collection-heading > p:last-child { font-size:.98rem; line-height:1.75; }
   .unlock-form button { padding-inline:14px; }
+  .memory-card.unlocked .shahd-letter,
+  .memory-card.unlocked .abdelrhman-letter,
+  .memory-card.unlocked .omar-letter,
+  .memory-card.unlocked .omar-hashem-letter,
+  .memory-card.unlocked .mariam-el-masry-letter { width:calc(100vw - 24px); height:calc(100svh - 24px); padding:16px; }
+  .shahd-letter h3,
+  .abdelrhman-letter h3,
+  .omar-letter h3,
+  .omar-hashem-letter h3,
+  .mariam-el-masry-letter h3 { margin-right:52px; font-size:clamp(1.9rem,10vw,2.7rem); }
+  .shahd-letter .bridesmaid-signature,
+  .abdelrhman-letter .bridesmaid-signature,
+  .omar-letter .bridesmaid-signature,
+  .omar-hashem-letter .bridesmaid-signature,
+  .mariam-el-masry-letter .bridesmaid-signature { margin-top:10px; font-size:1.05rem; }
   .mariam-photo { float:none; width:100%; margin:0 0 28px; }
   .mariam-letter-copy p { font-size:.86rem; }
 }

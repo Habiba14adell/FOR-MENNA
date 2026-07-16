@@ -6,10 +6,20 @@ let openCard = null;
 
 function loadMedia(card) {
   card.querySelectorAll('[data-src]').forEach(element => {
-    element.src = element.dataset.src;
+    element.setAttribute('src', element.dataset.src);
     element.removeAttribute('data-src');
   });
   card.querySelectorAll('video, audio').forEach(media => media.load());
+}
+
+function playMedia(media) {
+  const startPlayback = () => media.play().catch(() => media.classList.add('autoplay-blocked'));
+  media.classList.remove('autoplay-blocked');
+  if (media.readyState >= 2) {
+    startPlayback();
+    return;
+  }
+  media.addEventListener('loadeddata', startPlayback, { once: true });
 }
 
 function unlockCard(card) {
@@ -26,7 +36,7 @@ function unlockCard(card) {
     document.querySelectorAll('video, audio').forEach(otherMedia => {
       if (otherMedia !== media && !otherMedia.paused) otherMedia.pause();
     });
-    media.play().catch(() => media.classList.add('autoplay-blocked'));
+    playMedia(media);
   }
 }
 

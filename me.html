@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>From Me &middot; For the Bride</title>
+  <link rel="stylesheet" href="sections.css">
+  <style>
+    .me-page { width:min(1180px,100%); margin:auto; overflow:hidden; background:#fff8ee; box-shadow:0 12px 50px rgba(70,54,42,.1); }
+    .me-hero { min-height:calc(100svh - clamp(20px,6vw,68px)); display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); background:linear-gradient(135deg,#f2cf55,#fff2c5 52%,#fffaf0); }
+    .me-hero-copy { position:relative; isolation:isolate; padding:clamp(28px,5vw,62px); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
+    .me-hero-copy::before { content:""; position:absolute; z-index:-1; right:-90px; bottom:-70px; width:320px; aspect-ratio:1; clip-path:polygon(50% 96%,43% 88%,18% 65%,7% 49%,4% 33%,8% 19%,18% 10%,31% 8%,41% 13%,50% 25%,59% 13%,69% 8%,82% 10%,92% 19%,96% 33%,93% 49%,82% 65%,57% 88%); background:rgba(255,250,240,.52); }
+    .me-kicker { margin:0 0 18px; color:#7d644f; font-size:.68rem; font-weight:500; letter-spacing:.24em; text-transform:uppercase; }
+    .me-hero h1 { max-width:620px; margin:0; font-family:"Italiana",serif; font-size:clamp(4rem,8vw,8rem); font-weight:400; line-height:.82; }
+    .me-hero p { max-width:470px; color:#6b5747; line-height:1.8; }
+    .me-bride { position:relative; min-width:0; margin:0; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; background:linear-gradient(180deg,#fff8ec,#ead7c2); }
+    .me-bride::before { content:""; position:absolute; left:50%; bottom:-120px; width:88%; aspect-ratio:1; border-radius:50%; background:#f2cf55; opacity:.52; transform:translateX(-50%); }
+    .me-bride img { position:relative; z-index:1; width:min(560px,96%); height:92%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 18px 18px rgba(83,61,45,.14)); }
+    .me-letter-section { padding:clamp(54px,8vw,105px) clamp(20px,7vw,90px); background:#fffaf0; }
+    .me-letter { max-width:900px; margin:auto; padding:clamp(30px,5vw,58px); border:1px solid rgba(73,55,43,.16); background:linear-gradient(145deg,#fffdf7,#f8ead8); box-shadow:10px 12px 0 rgba(242,207,85,.72); }
+    .me-letter h2 { margin:0 0 26px; font-family:"Italiana",serif; font-size:clamp(2.8rem,5.2vw,5.4rem); font-weight:400; line-height:.95; }
+    .me-letter-copy { border-block:1px solid rgba(73,55,43,.14); padding-block:25px; }
+    .me-letter-copy p { margin:0 0 18px; color:#604f43; font-weight:300; line-height:1.85; }
+    .me-letter-copy p:last-child { margin-bottom:0; }
+    .me-signature { margin:28px 0 0; font-family:"Italiana",serif; font-size:1.45rem; }
+    @media (max-width:760px) {
+      .me-hero { grid-template-columns:1fr; }
+      .me-hero-copy { min-height:520px; }
+      .me-bride { min-height:460px; }
+      .me-letter { padding:28px 22px; box-shadow:6px 7px 0 rgba(242,207,85,.72); }
+    }
+  </style>
+</head>
+<body>
+  <main class="me-page">
+    <section class="me-hero">
+      <div class="me-hero-copy">
+        <a class="back" href="index.html#open-gifts">&larr; Back to the gifts</a>
+        <div>
+          <p class="me-kicker">A present from me</p>
+          <h1>For my beautiful bride.</h1>
+          <p>For the friendship that started with football, became sisterhood, and found its way into forever.</p>
+        </div>
+      </div>
+      <figure class="me-bride">
+        <img src="assets/bride-transparent.png" alt="The bride wearing her veil">
+      </figure>
+    </section>
+
+    <section class="me-letter-section">
+      <article class="me-letter">
+        <p class="me-kicker">A letter for Menna</p>
+        <h2>Forever your sister, forever your bestie.</h2>
+        <div class="me-letter-copy">
+          <p>Hey, my beautiful bride Menna. <span aria-hidden="true">&#129293;</span></p>
+          <p>How could I ever forget how our friendship even started? It all began with our silly arguments over the Zamalek vs. Ahly matches. <span aria-hidden="true">&#128514;</span> From that day on, I became the white and you became the red, and somehow those little football debates turned into one of the most beautiful friendships of my life.</p>
+          <p>We&rsquo;ve been through so much together&mdash;the highs, the lows, the moments when life felt easy, and the moments when we just needed someone to lean on. Through every season, we&rsquo;ve always found our way back to each other.</p>
+          <p>I think one of the happiest moments for me was when you moved to my city. Suddenly, we weren&rsquo;t just friends who met at university anymore&mdash;we got to build a whole new chapter together. From our morning runs and long walks to our random conversations and little adventures, those moments became some of my favorite memories, and I&rsquo;ll always be grateful for them.</p>
+          <p>I still can&rsquo;t believe this day is finally here. It feels like yesterday we were just university girls, and now I&rsquo;m watching you marry the love of your life. Who would have thought that a story that started at our university football tournament would lead to this beautiful forever? Allah truly writes the most beautiful stories.</p>
+          <p>I keep thinking about all the little moments we&rsquo;ve shared. I still remember the surprise party you threw for me in 2022. Looking back now, it makes me smile because that was around the time your own love story was beginning, even though none of us knew what Allah had planned for you. Watching your journey from those first moments to becoming a bride today has been such a privilege.</p>
+          <p>I&rsquo;m so proud of the woman you&rsquo;ve become, and so happy that you found someone who makes your heart feel at home. You deserve every bit of this happiness.</p>
+          <p>Thank you for letting me be part of your story, your memories, and one of the happiest chapters of your life. Thank you for every laugh, every conversation, every adventure, and every memory. Most of all, thank you for being the sister I got to choose. I love you more than words could ever express.</p>
+          <p>May Allah bless your marriage with endless love, mercy, laughter, understanding, and barakah. May He always keep you close to one another through every season of life, fill your home with peace, and grant you a lifetime of beautiful memories. May He bless your home with righteous children, protect your love from every hardship, and always place happiness in your hearts. Ameen.</p>
+          <p>No matter where life takes us, I&rsquo;ll always be cheering for you, celebrating you, and standing beside you. Forever your sister, forever your bestie.</p>
+          <p>I love you so much, my beautiful bride. Congratulations, and here&rsquo;s to your happily ever after. Insha&rsquo;Allah. <span aria-hidden="true">&#129293;</span></p>
+        </div>
+        <p class="me-signature">With all my love.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
