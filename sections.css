@@ -417,13 +417,11 @@ body.modal-open { overflow:hidden; }
 .memory-card[data-memory="omar-hashem"] { order:6; }
 .memory-card[data-memory="noura-ibrahim"] { order:7; }
 .memory-card[data-memory="mama"] { order:8; }
-.memory-card[data-memory="omar-wael"] { order:9; }
 .memory-card[data-memory="abdelrhman-magdy"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card[data-memory="mariam-el-masry"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card[data-memory="omar-hashem"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card[data-memory="noura-ibrahim"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card[data-memory="mama"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
-.memory-card[data-memory="omar-wael"] { background:#fffaf2; box-shadow:8px 9px 0 rgba(242,207,85,.72); }
 .memory-card[data-memory^="family-"] { display:none; }
 .lock-icon { border-color:#d4a61e; color:#bd8e00; background:#fff4c5; }
 .unlock-form button { background:#49372b; }
@@ -456,8 +454,7 @@ body.modal-open { overflow:hidden; }
 .memory-card.unlocked .abdelrhman-letter,
 .memory-card.unlocked .omar-letter,
 .memory-card.unlocked .omar-hashem-letter,
-.memory-card.unlocked .mariam-el-masry-letter,
-.memory-card.unlocked .omar-wael-letter {
+.memory-card.unlocked .mariam-el-masry-letter {
   display:flex;
   flex-direction:column;
   width:min(1220px,calc(100vw - 34px));
@@ -469,8 +466,7 @@ body.modal-open { overflow:hidden; }
 .abdelrhman-letter .close-memory,
 .omar-letter .close-memory,
 .omar-hashem-letter .close-memory,
-.mariam-el-masry-letter .close-memory,
-.omar-wael-letter .close-memory {
+.mariam-el-masry-letter .close-memory {
   position:absolute;
   top:clamp(18px,2.4vw,32px);
   right:clamp(18px,2.4vw,32px);
@@ -480,14 +476,12 @@ body.modal-open { overflow:hidden; }
 .abdelrhman-letter .section-kicker,
 .omar-letter .section-kicker,
 .omar-hashem-letter .section-kicker,
-.mariam-el-masry-letter .section-kicker,
-.omar-wael-letter .section-kicker { flex:0 0 auto; padding-top:0; margin:0 62px 8px 0; }
+.mariam-el-masry-letter .section-kicker { flex:0 0 auto; padding-top:0; margin:0 62px 8px 0; }
 .shahd-letter h3,
 .abdelrhman-letter h3,
 .omar-letter h3,
 .omar-hashem-letter h3,
-.mariam-el-masry-letter h3,
-.omar-wael-letter h3 {
+.mariam-el-masry-letter h3 {
   flex:0 0 auto;
   margin:0 62px clamp(14px,2vw,24px) 0;
   font-size:clamp(2.1rem,4vw,3.8rem);
@@ -497,8 +491,7 @@ body.modal-open { overflow:hidden; }
 .abdelrhman-video-frame,
 .omar-video-frame,
 .omar-hashem-video-frame,
-.mariam-el-masry-video-frame,
-.omar-wael-video-frame {
+.mariam-el-masry-video-frame {
   flex:1 1 auto;
   min-height:0;
   margin-top:0;
@@ -508,14 +501,12 @@ body.modal-open { overflow:hidden; }
 .abdelrhman-video-frame video,
 .omar-video-frame video,
 .omar-hashem-video-frame video,
-.mariam-el-masry-video-frame video,
-.omar-wael-video-frame video { width:100%; height:100%; max-height:none; object-fit:contain; background:#211a16; }
+.mariam-el-masry-video-frame video { width:100%; height:100%; max-height:none; object-fit:contain; background:#211a16; }
 .shahd-letter .bridesmaid-signature,
 .abdelrhman-letter .bridesmaid-signature,
 .omar-letter .bridesmaid-signature,
 .omar-hashem-letter .bridesmaid-signature,
-.mariam-el-masry-letter .bridesmaid-signature,
-.omar-wael-letter .bridesmaid-signature { flex:0 0 auto; margin-top:14px; text-align:center; }
+.mariam-el-masry-letter .bridesmaid-signature { flex:0 0 auto; margin-top:14px; text-align:center; }
 .family-video-note { flex:0 0 auto; max-width:900px; margin:14px auto 0; color:#655244; font-size:clamp(.88rem,1.1vw,1rem); line-height:1.65; text-align:center; }
 .family-name-card { display:block; }
 .family-name-card-inner { min-height:470px; padding:34px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
@@ -538,20 +529,17 @@ body.modal-open { overflow:hidden; }
   .memory-card.unlocked .abdelrhman-letter,
   .memory-card.unlocked .omar-letter,
   .memory-card.unlocked .omar-hashem-letter,
-  .memory-card.unlocked .mariam-el-masry-letter,
-  .memory-card.unlocked .omar-wael-letter { width:calc(100vw - 24px); height:calc(100svh - 24px); padding:16px; }
+  .memory-card.unlocked .mariam-el-masry-letter { width:calc(100vw - 24px); height:calc(100svh - 24px); padding:16px; }
   .shahd-letter h3,
   .abdelrhman-letter h3,
   .omar-letter h3,
   .omar-hashem-letter h3,
-  .mariam-el-masry-letter h3,
-  .omar-wael-letter h3 { margin-right:52px; font-size:clamp(1.9rem,10vw,2.7rem); }
+  .mariam-el-masry-letter h3 { margin-right:52px; font-size:clamp(1.9rem,10vw,2.7rem); }
   .shahd-letter .bridesmaid-signature,
   .abdelrhman-letter .bridesmaid-signature,
   .omar-letter .bridesmaid-signature,
   .omar-hashem-letter .bridesmaid-signature,
-  .mariam-el-masry-letter .bridesmaid-signature,
-  .omar-wael-letter .bridesmaid-signature { margin-top:10px; font-size:1.05rem; }
+  .mariam-el-masry-letter .bridesmaid-signature { margin-top:10px; font-size:1.05rem; }
   .mariam-photo { float:none; width:100%; margin:0 0 28px; }
   .noura-photo { float:none; width:100%; margin:0 0 28px; }
   .mariam-letter-copy p { font-size:.86rem; }

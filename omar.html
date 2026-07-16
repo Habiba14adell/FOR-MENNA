@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#ddc5aa">
-  <title>Groom - For the Bride</title>
+  <title>Omar Wael - For the Bride</title>
   <link rel="stylesheet" href="sections.css">
   <style>
     .groom-page {
@@ -63,6 +63,107 @@
       box-shadow:0 28px 60px rgba(73,55,43,.16),8px 9px 0 rgba(242,207,85,.72);
     }
 
+    .groom-lock {
+      width:min(520px,100%);
+      margin:0 auto;
+      padding:clamp(26px,4vw,42px);
+      border:1px solid rgba(73,55,43,.16);
+      border-radius:8px;
+      background:#fffaf2;
+      box-shadow:0 28px 60px rgba(73,55,43,.13),8px 9px 0 rgba(242,207,85,.72);
+      text-align:center;
+    }
+
+    .groom-lock-icon {
+      width:58px;
+      height:58px;
+      margin:0 auto 20px;
+      display:grid;
+      place-items:center;
+      border:1px solid #d4a61e;
+      border-radius:50%;
+      color:#bd8e00;
+      background:#fff4c5;
+      font-size:1.5rem;
+    }
+
+    .groom-lock h2 {
+      margin:0 0 10px;
+      font-family:"Italiana",serif;
+      font-size:clamp(2.4rem,5vw,4rem);
+      font-weight:400;
+    }
+
+    .groom-hint {
+      margin:0 0 22px;
+      color:#796252;
+      font-style:italic;
+    }
+
+    .groom-hint span {
+      margin-right:7px;
+      color:#765844;
+      font-size:.62rem;
+      font-style:normal;
+      font-weight:500;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .groom-unlock-form label {
+      display:block;
+      margin-bottom:9px;
+      color:#806a59;
+      font-size:.68rem;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+
+    .groom-unlock-form div {
+      display:flex;
+    }
+
+    .groom-unlock-form input {
+      min-width:0;
+      flex:1;
+      padding:14px 15px;
+      border:1px solid rgba(73,55,43,.18);
+      border-right:0;
+      border-radius:10px 0 0 10px;
+      outline:none;
+      color:#49372b;
+      background:#fffaf3;
+      font:inherit;
+    }
+
+    .groom-unlock-form button {
+      padding:0 19px;
+      border:0;
+      border-radius:0 10px 10px 0;
+      color:#fffaf3;
+      background:#49372b;
+      cursor:pointer;
+      font:inherit;
+    }
+
+    .groom-unlock-form button:hover {
+      background:#d49d00;
+    }
+
+    .groom-status {
+      min-height:20px;
+      margin:9px 0 0;
+      font-size:.75rem;
+    }
+
+    .groom-status.error {
+      color:#9d4037;
+    }
+
+    .groom-video-wrap[hidden] {
+      display:none;
+    }
+
     .groom-video-wrap video {
       display:block;
       width:100%;
@@ -98,17 +199,60 @@
       <a class="back" href="index.html#open-gifts">← Back to the gifts</a>
       <header class="groom-heading">
         <p class="section-kicker">A gift from the groom</p>
-        <h1>From Omar</h1>
+        <h1>From Omar Wael</h1>
         <p>A private video from the person waiting for this forever with you.</p>
       </header>
 
-      <div class="groom-video-wrap">
-        <video controls playsinline preload="metadata">
-          <source src="family/omar.mp4" type="video/mp4">
+      <div class="groom-lock" id="groom-lock">
+        <div class="groom-lock-icon" aria-hidden="true">&#9825;</div>
+        <h2>Omar Wael</h2>
+        <p class="groom-hint"><span>Hint</span> Burger</p>
+        <form class="groom-unlock-form" id="groom-unlock-form">
+          <label for="groom-code">Secret code</label>
+          <div>
+            <input id="groom-code" type="text" autocomplete="off" placeholder="Enter the secret code">
+            <button type="submit">Unlock</button>
+          </div>
+          <p class="groom-status" id="groom-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="groom-video-wrap" id="groom-video-wrap" hidden>
+        <video controls playsinline autoplay preload="auto">
+          <source src="groom/omar.mp4" type="video/mp4">
         </video>
-        <p class="groom-signature">With all my love, Omar</p>
+        <p class="groom-signature">With all my love, Omar Wael</p>
       </div>
     </section>
   </main>
+  <script>
+    const form = document.getElementById('groom-unlock-form');
+    const input = document.getElementById('groom-code');
+    const status = document.getElementById('groom-status');
+    const lock = document.getElementById('groom-lock');
+    const videoWrap = document.getElementById('groom-video-wrap');
+    const video = videoWrap.querySelector('video');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (input.value.trim().toUpperCase() === 'WIMPY') {
+        lock.hidden = true;
+        videoWrap.hidden = false;
+        video.currentTime = 0;
+        video.load();
+        const startVideo = () => video.play().catch(() => {});
+        if (video.readyState >= 2) {
+          startVideo();
+        } else {
+          video.addEventListener('loadeddata', startVideo, { once: true });
+        }
+        return;
+      }
+
+      status.textContent = 'That code does not match. Try again.';
+      status.className = 'groom-status error';
+      input.select();
+    });
+  </script>
 </body>
 </html>
