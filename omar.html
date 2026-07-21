@@ -218,7 +218,7 @@
       </div>
 
       <div class="groom-video-wrap" id="groom-video-wrap" hidden>
-        <video controls playsinline autoplay preload="auto">
+        <video controls playsinline preload="metadata">
           <source src="groom/omar.mp4" type="video/mp4">
         </video>
         <p class="groom-signature">With all my love, Omar Wael</p>
@@ -232,6 +232,10 @@
     const lock = document.getElementById('groom-lock');
     const videoWrap = document.getElementById('groom-video-wrap');
     const video = videoWrap.querySelector('video');
+
+    // Keep the private video stopped until the secret code is accepted.
+    video.pause();
+    video.currentTime = 0;
 
     form.addEventListener('submit', event => {
       event.preventDefault();

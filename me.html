@@ -24,24 +24,38 @@
     .me-letter-copy p:last-child { margin-bottom:0; }
     .me-signature { margin:28px 0 0; font-family:"Italiana",serif; font-size:1.45rem; }
     .me-scrapbook-section { position:relative; isolation:isolate; padding:clamp(58px,8vw,105px) clamp(18px,6vw,74px); background:linear-gradient(180deg,#fff7df,#f3d988); overflow:hidden; }
-    .me-scrapbook-section::before { content:""; position:absolute; z-index:-1; left:50%; top:42px; bottom:42px; width:5px; border-radius:999px; background:linear-gradient(#dfb62e,#fff3bd,#dfb62e); opacity:.7; transform:translateX(-50%); }
     .me-scrapbook-head { max-width:780px; margin:0 auto clamp(36px,6vw,62px); text-align:center; }
     .me-scrapbook-head h2 { margin:0; font-family:"Italiana",serif; font-size:clamp(2.8rem,6vw,5.8rem); font-weight:400; line-height:.9; }
-    .me-scrapbook-grid { width:min(980px,100%); margin:auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(20px,3.5vw,38px); }
-    .me-memory-photo { position:relative; margin:0; padding:12px 12px 36px; background:#fffdf8; box-shadow:0 16px 35px rgba(76,54,30,.2); transform:rotate(var(--tilt,-2deg)); }
-    .me-memory-photo::before { content:""; position:absolute; z-index:2; left:50%; top:-14px; width:88px; height:29px; background:rgba(255,244,191,.78); transform:translateX(-50%) rotate(calc(var(--tilt,-2deg) * -1)); box-shadow:0 1px 2px rgba(73,55,43,.08); }
-    .me-memory-photo img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#ead8c4; }
-    .me-memory-photo figcaption { margin-top:10px; color:#8b7665; font-size:.58rem; letter-spacing:.13em; text-align:center; text-transform:uppercase; }
-    .me-memory-photo:nth-child(2n) { --tilt:2.2deg; }
-    .me-memory-photo:nth-child(3n) { --tilt:-1.1deg; }
-    .me-memory-photo:nth-child(5n) { --tilt:1.4deg; }
+    .me-timeline { position:relative; width:min(1040px,100%); margin:auto; display:grid; gap:clamp(64px,9vw,110px); }
+    .me-timeline::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:3px; border-radius:999px; background:linear-gradient(#bd8d00,#fff1ad 50%,#bd8d00); transform:translateX(-50%); }
+    .me-timeline-item { position:relative; }
+    .me-timeline-dot { position:absolute; z-index:2; top:25px; left:50%; width:21px; height:21px; border:5px solid #fff7df; border-radius:50%; background:#9b7000; box-shadow:0 0 0 2px #9b7000; transform:translateX(-50%); }
+    .me-timeline-year { position:relative; z-index:3; width:max-content; margin:0 auto 38px; padding:10px 25px; border:1px solid #9b7000; border-radius:999px; color:#6b4e00; background:#fff7df; font-family:"Italiana",serif; font-size:clamp(2.6rem,5vw,4.8rem); font-weight:400; line-height:.8; }
+    .me-year-note { position:relative; z-index:1; width:max-content; max-width:90%; margin:-24px auto 32px; padding:4px 12px; color:#715b46; background:#f5dc91; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; }
+    .me-year-gallery { position:relative; z-index:1; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,3vw,34px); padding:clamp(22px,4vw,42px); border-radius:20px; background:rgba(255,248,219,.78); }
+    .me-timeline-year-photo { position:relative; z-index:1; width:min(390px,100%); margin:auto; }
+    .me-memories-box { padding-top:12px; }
+    .me-memories-box .me-timeline-dot { top:0; }
+    .me-memories-title { position:relative; z-index:3; width:max-content; margin:0 auto 26px; padding:8px 18px; border-radius:999px; color:#715b46; background:#f5dc91; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; }
+    .me-memory-photo { position:relative; margin:0; padding:12px 12px 22px; background:#fffdf8; box-shadow:0 16px 35px rgba(76,54,30,.2); transform:rotate(var(--tilt,-1.4deg)); }
+    .me-memory-photo::before { content:""; position:absolute; z-index:2; left:50%; top:-14px; width:88px; height:29px; background:rgba(255,244,191,.82); transform:translateX(-50%) rotate(calc(var(--tilt,-1.4deg) * -1)); box-shadow:0 1px 2px rgba(73,55,43,.08); }
+    .me-memory-photo img { display:block; width:100%; max-height:500px; aspect-ratio:4/5; object-fit:contain; background:#f7eddb; }
+    .me-memory-photo figcaption { margin-top:13px; color:#765f4c; font-family:"Italiana",serif; font-size:1.15rem; text-align:center; }
+    .me-memory-photo:nth-child(even) { --tilt:1.4deg; }
+    .me-memory-photo:last-child:nth-child(3n + 1) { grid-column:2; }
     @media (max-width:760px) {
       .me-hero { grid-template-columns:1fr; }
       .me-hero-copy { min-height:520px; }
       .me-bride { min-height:460px; }
       .me-letter { padding:28px 22px; box-shadow:6px 7px 0 rgba(242,207,85,.72); }
-      .me-scrapbook-section::before { left:31px; transform:none; }
-      .me-scrapbook-grid { grid-template-columns:1fr; padding-left:26px; }
+      .me-timeline { gap:64px; }
+      .me-timeline::before { left:50%; }
+      .me-timeline-year { font-size:3rem; }
+      .me-year-gallery { grid-template-columns:1fr 1fr; padding:18px; }
+      .me-memory-photo:last-child:nth-child(3n + 1) { grid-column:auto; }
+    }
+    @media (max-width:480px) {
+      .me-year-gallery { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -69,7 +83,7 @@
           <p>Hey, my beautiful bride Menna. <span aria-hidden="true">&#129293;</span></p>
           <p>How could I ever forget how our friendship even started? It all began with our silly arguments over the Zamalek vs. Ahly matches. <span aria-hidden="true">&#128514;</span> From that day on, I became the white and you became the red, and somehow those little football debates turned into one of the most beautiful friendships of my life.</p>
           <p>We&rsquo;ve been through so much together&mdash;the highs, the lows, the moments when life felt easy, and the moments when we just needed someone to lean on. Through every season, we&rsquo;ve always found our way back to each other.</p>
-          <p>I think one of the happiest moments for me was when you moved to my city. Suddenly, we weren&rsquo;t just friends who met at university anymore&mdash;we got to build a whole new chapter together. From our morning runs and long walks to our random conversations and little adventures, those moments became some of my favorite memories, and I&rsquo;ll always be grateful for them.</p>
+          <p>I think one of the happiest moments for me was when you told me you were moving to my city. I was so excited because, in my mind, it meant we&rsquo;d get to build a whole new chapter together. I imagined us going on our morning runs, taking long walks, having coffee whenever we wanted, and spending so much more time together. It felt like we were finally going to have a second home in each other&mdash;a place where we could always meet, laugh, and make new memories. And we did. Those moments became some of my favorite memories, and I&rsquo;ll always cherish them.</p>
           <p>I still can&rsquo;t believe this day is finally here. It feels like yesterday we were just university girls, and now I&rsquo;m watching you marry the love of your life. Who would have thought that a story that started at our university football tournament would lead to this beautiful forever? Allah truly writes the most beautiful stories.</p>
           <p>I keep thinking about all the little moments we&rsquo;ve shared. I still remember the surprise party you threw for me in 2022. Looking back now, it makes me smile because that was around the time your own love story was beginning, even though none of us knew what Allah had planned for you. Watching your journey from those first moments to becoming a bride today has been such a privilege.</p>
           <p>I&rsquo;m so proud of the woman you&rsquo;ve become, and so happy that you found someone who makes your heart feel at home. You deserve every bit of this happiness.</p>
@@ -84,28 +98,56 @@
 
     <section class="me-scrapbook-section" aria-labelledby="me-scrapbook-title">
       <header class="me-scrapbook-head">
-        <p class="me-kicker">Our scrapbook</p>
-        <h2 id="me-scrapbook-title">The little moments that became everything.</h2>
+        <p class="me-kicker">Our story &middot; 2019&ndash;2026</p>
+        <h2 id="me-scrapbook-title">From where we started to where we are now.</h2>
       </header>
-      <div class="me-scrapbook-grid">
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM (1).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM (2).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM (3).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.54 AM.jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (1).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (2).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (3).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (4).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (5).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (6).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (7).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (8).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (9).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM (10).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.55 AM.jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.56 AM (1).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.56 AM (2).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
-        <figure class="me-memory-photo"><img src="me/WhatsApp Image 2026-07-17 at 12.48.56 AM.jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+      <div class="me-timeline">
+        <article class="me-timeline-item">
+          <span class="me-timeline-dot" aria-hidden="true"></span><h3 class="me-timeline-year">2019</h3><p class="me-year-note">The start of us</p>
+          <div class="me-timeline-year-photo">
+            <figure class="me-memory-photo"><img src="me/2019%20(1).jpeg" alt="Menna and her best friend in 2019"><figcaption>Where our story began</figcaption></figure>
+          </div>
+        </article>
+        <article class="me-timeline-item me-memories-box">
+          <span class="me-timeline-dot" aria-hidden="true"></span><h3 class="me-memories-title">Our memories along the way</h3>
+          <div class="me-year-gallery">
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.54%20AM%20(1).jpeg" alt="A memory with Menna"><figcaption>Our early memories</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.54%20AM%20(2).jpeg" alt="A memory with Menna"><figcaption>Always together</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.54%20AM%20(3).jpeg" alt="A memory with Menna"><figcaption>Little moments</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.54%20AM.jpeg" alt="A memory with Menna"><figcaption>Growing together</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/2022.jpeg" alt="Menna and her best friend in 2022"><figcaption>2022</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM%20(2).jpeg" alt="A memory with Menna"><figcaption>Side by side</figcaption></figure>
+          </div>
+        </article>
+        <article class="me-timeline-item">
+          <span class="me-timeline-dot" aria-hidden="true"></span><h3 class="me-timeline-year">2023</h3><p class="me-year-note">The middle of our journey</p>
+          <div class="me-timeline-year-photo">
+            <figure class="me-memory-photo"><img src="me/2023.jpeg" alt="Menna and her best friend in 2023"><figcaption>Another beautiful chapter</figcaption></figure>
+          </div>
+        </article>
+        <article class="me-timeline-item me-memories-box">
+          <span class="me-timeline-dot" aria-hidden="true"></span><h3 class="me-memories-title">All the moments that followed</h3>
+          <div class="me-year-gallery">
+            <figure class="me-memory-photo"><img src="me/IMG_2507.jpg" alt="Menna and her best friend taking a mirror photo"><figcaption>Another moment together</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM%20(4).jpeg" alt="A memory with Menna"><figcaption>One for us</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM%20(5).jpeg" alt="A memory with Menna"><figcaption>Another adventure</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM%20(9).jpeg" alt="A memory with Menna"><figcaption>My chosen sister</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/2025.jpeg" alt="Menna and her best friend in 2025"><figcaption>2025</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/2025_1.jpeg" alt="Another memory with Menna in 2025"><figcaption>More moments to keep forever</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM%20(6).jpeg" alt="Menna celebrating with her best friend in 2025"><figcaption>2025 &middot; Memories forever</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM%20(10).jpeg" alt="A memory with Menna"><figcaption>So much love</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.55%20AM.jpeg" alt="A memory with Menna"><figcaption>Always laughing</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.56%20AM%20(1).jpeg" alt="A memory with Menna"><figcaption>Forever besties</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.56%20AM%20(2).jpeg" alt="A memory with Menna"><figcaption>More to come</figcaption></figure>
+            <figure class="me-memory-photo"><img src="me/WhatsApp%20Image%202026-07-17%20at%2012.48.56%20AM.jpeg" alt="A memory with Menna"><figcaption>Our beautiful journey</figcaption></figure>
+          </div>
+        </article>
+        <article class="me-timeline-item">
+          <span class="me-timeline-dot" aria-hidden="true"></span><h3 class="me-timeline-year">2026</h3><p class="me-year-note">Where we are now</p>
+          <div class="me-timeline-year-photo">
+            <figure class="me-memory-photo"><img src="me/2026.jpeg" alt="Menna and her best friend in 2026"><figcaption>Today, my beautiful bride</figcaption></figure>
+          </div>
+        </article>
       </div>
     </section>
   </main>
