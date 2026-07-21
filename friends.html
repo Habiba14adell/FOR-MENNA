@@ -116,8 +116,7 @@
         </header>
         <article class="friend-message friend-video-message">
           <figure class="friend-video-frame">
-            <video class="nour-video" controls playsinline preload="metadata">
-              <source src="friends/nour.mp4" type="video/mp4">
+            <video class="nour-video" src="friends/nour.mp4" controls playsinline preload="auto">
               Your browser does not support video playback.
             </video>
             <figcaption>Made with love, especially for you</figcaption>
@@ -304,15 +303,12 @@
 
     const nourSection = document.getElementById('nour-message');
     const nourVideo = nourSection.querySelector('.nour-video');
+    nourVideo.load();
     const nourObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        if (nourVideo.ended) nourVideo.currentTime = 0;
-        nourVideo.play().catch(() => nourVideo.classList.add('autoplay-blocked'));
-      } else if (!nourVideo.paused) {
+      if (!entry.isIntersecting && !nourVideo.paused) {
         nourVideo.pause();
       }
     }, { threshold: .25 });
-    nourVideo.addEventListener('play', () => nourVideo.classList.remove('autoplay-blocked'));
     nourObserver.observe(nourSection.querySelector('.friend-message'));
 
     const israaSection = document.getElementById('israa-message');
